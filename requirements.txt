@@ -1,0 +1,41 @@
+Functional Requirements
+
+Museum Navigation
+- The user must be able to open the museum map.
+- The user must be able to see their current location on the map.
+- The user must be able to select a destination (e.g., exhibit, exit, restroom).
+- The user must be able to select their preferred route to a destination.
+- The system must calculate and display the suggested route to the selected point.
+- The system must calculate the user's arrival time to the selected exhibit.
+- The user must be able to see the estimated arrival time to the selected exhibit.
+
+Exhibit Information
+
+- The user must be able to view information about the exhibits.
+- The user must be able to scan (e.g., QR code, NFC) to receive information about an exhibit.
+- The user must be able to listen to an audio description of an exhibit.
+- The user must be able to view a list of all museum exhibits.
+- The user must be able to search for exhibits by category or keyword.
+
+Exhibit Interaction
+
+- The user must be able to leave ratings for exhibits.
+- The user must be able to add exhibits to their favorites.
+
+Additional Features
+
+- The user must be able to see real-time visitor traffic at an exhibit.
+- The system must notify the user if an exhibit is crowded and suggest alternative exhibits or different visiting times.
+- The user must be able to change the application's language.
+- The user must receive a notification when approaching their selected exhibit.
+- The system must warn the user if they deviate from the optimal route and provide new directions.
+- The system must provide step-by-step navigation instructions
+- The system must have access to the GPS signal of the device for accurate location tracking.
+
+Non-functional Requirements
+
+- The system must find the shortest path to an exhibit.
+- The system must calculate multiple routes to the exit.
+- The application must function without internet connection (offline mode for basic features).
+- The system must display search results within 2 seconds.
+- The user interface must be accessible to people with disabilities (e.g., support for voice commands, screen readers).
