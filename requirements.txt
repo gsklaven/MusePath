@@ -19,7 +19,7 @@ Exhibit Information
 
 Exhibit Interaction
 
-- The user must be able to leave ratings for exhibits.
+- The user must be able to rate exhibits.
 - The user must be able to add exhibits to their favorites.
 
 Additional Features
@@ -27,7 +27,6 @@ Additional Features
 - The user must be able to see real-time visitor traffic at an exhibit.
 - The system must notify the user if an exhibit is crowded and suggest alternative exhibits or different visiting times.
 - The user must be able to change the application's language.
-- The user must receive a notification when approaching their selected exhibit.
 - The system must warn the user if they deviate from the optimal route and provide new directions.
 - The system must provide step-by-step navigation instructions
 - The system must have access to the GPS signal of the device for accurate location tracking.
@@ -37,5 +36,5 @@ Non-functional Requirements
 - The system must find the shortest path to an exhibit.
 - The system must calculate multiple routes to the exit.
 - The application must function without internet connection (offline mode for basic features).
-- The system must display search results within 2 seconds.
+- Response time should be under 2 seconds for all user interactions.
 - The user interface must be accessible to people with disabilities (e.g., support for voice commands, screen readers).
