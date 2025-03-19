@@ -5,9 +5,11 @@ Museum Navigation
 - The user must be able to see their current location on the map.
 - The user must be able to select a destination (e.g., exhibit, exit, restroom).
 - The user must be able to select their preferred route to a destination.
-- The system must calculate and display the suggested route to the selected point.
+- The user must be able to zoom and rotate the map.
+- The system must calculate and display the suggested route to the selected point within 5 seconds.
 - The system must calculate the user's arrival time to the selected exhibit.
 - The user must be able to see the estimated arrival time to the selected exhibit.
+- The system should update in real time the status of the available destinations.
 
 Exhibit Information
 
@@ -32,9 +34,13 @@ Additional Features
 - The system must have access to the GPS signal of the device for accurate location tracking.
 
 Non-functional Requirements
-
-- The system must find the shortest path to an exhibit.
-- The system must calculate multiple routes to the exit.
-- The application must function without internet connection (offline mode for basic features).
 - Response time should be under 2 seconds for all user interactions.
 - The user interface must be accessible to people with disabilities (e.g., support for voice commands, screen readers).
+- The system must support at least 10,000 concurrent users without degradation in service.
+- The system must consume no more than 10% of device battery per hour of active use.
+- The system must encrypt all user data during transmission and storage.
+- The system must request explicit permission before collecting or storing any user data.
+- The system must request explicit permission before accessing the device GPS.
+- The system must implement data backup procedures to prevent information loss.
+- The system must automatically recover from crashes without requiring user intervention.
+- The system must be compatible with iOS and Android operating systems.
