@@ -1,0 +1,18 @@
+@startuml
+
+actor User
+actor System as Sys
+
+rectangle "Exhibit Information and Interaction" {
+    User --> (View Exhibit Information)
+    User --> (List audio transcript)
+    User --> (View all Exhibits)
+    User --> (Search Exhibits)
+    User --> (Rate Exhibits)
+    User --> (Favourite Exhibits)
+    User --> (Change language)
+    Sys --> (Provide personalized routes through preferences)
+}
+
+
+@enduml
