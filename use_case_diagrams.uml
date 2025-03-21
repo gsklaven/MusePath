@@ -9,6 +9,7 @@ rectangle "Museum Navigation" {
     User --> (Select Destination)
     User --> (Select preffered route)
     User --> (Zoom and rotate map)
+    User --> (See locatio on map)
     Sys --> (Calculate Route)
     Sys --> (Calculate arrival time)
     Sys --> (Update Route)
