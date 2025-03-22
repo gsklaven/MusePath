@@ -73,10 +73,10 @@ And the system confirms the addition with a notification
 And the system suggests related exhibits that might interest the user
 And the system provides an option to organize collections into custom categories
 
-Scenario: User generates personalized museum visit certificate
+Scenario: User generates museum visit certificate
 Given the user has completed their museum visit
 When the user accesses the "Visit Achievements" section
-Then the system generates a personalized certificate showing exhibits viewed
+Then the system generates a certificate showing exhibits viewed
 And the system includes any achievement badges earned (e.g., "Art History Enthusiast")
 And the system allows the user to download the certificate as an image
 And the system provides sharing options for the certificate
