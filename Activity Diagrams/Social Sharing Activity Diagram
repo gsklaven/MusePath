@@ -1,0 +1,25 @@
+@startuml Social_Sharing_Activity_Diagram
+
+title Social Sharing Activity Diagram
+
+|User|
+start
+:View Exhibit Information;
+:Tap Share Button;
+|System|
+:Display Sharing Options;
+|User|
+:Add Personal Comment;
+:Select Sharing Platform;
+|System|
+:Process Sharing Request;
+
+if (Sharing Successful?) then (Yes)
+  :Display Success Notification;
+else (No)
+  :Display Error Message;
+endif
+stop
+
+@enduml
+
