@@ -42,7 +42,7 @@ Given the user has downloaded content for offline use
 When the user accesses the "Manage Offline Content" settings
 Then the system displays all downloaded content categories with their storage usage
 And the system allows the user to delete specific content to free up space
-And the system provides an option to update outdated offline content when online
+And the system provides an option to update outdated offline content when online	
 
 
 Feature: Social Sharing and Experience Documentation
