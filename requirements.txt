@@ -1,54 +1,41 @@
 Functional Requirements
 Museum Navigation
 1. The user must be able to open the museum map.
-2. The user must be able to see their current location on the map.
-3. The user must be able to select a destination (e.g., exhibit, exit, restroom).
-4. The user must be able to select their preferred route to the destination.
-5. The user must be able to zoom and rotate the map.
-6. The user must be able to see real-time visitor traffic at an destination.
-7. The system must calculate and display the suggested route to the selected destination within 5 seconds.
-8. The system must calculate the user's arrival time to the seleted destination.
+2. The user must be able to zoom and rotate the map.
+3. The user must be able to see their current location on the map.
+4. The user must be able to select a destination (e.g., exhibit, exit, restroom) on the map.
+5. The system must calculate the suggested route to the selected destination within 5 seconds. 
+6. The system must display the suggested route to the selected destination within 5 seconds.
+7. The system must calculate the user's arrival time to the seleted destination.
+8. The user must be able to modify (e.g, add/remove) the stops of the generated route.
 9. The system should update in real time the status of the available destinations.
-10. The system must notify the user if a destination is crowded and suggest alternative destinations or different visiting times.
-11. The system must warn the user if they deviate from the optimal route and provide new directions.
-12. The system must provide step-by-step navigation instructions
-13. The system must have access to the GPS signal of the device for accurate location tracking.
+10. The system must be able to suggest alternative destinations or different visiting times if the destination is inaccesible (e.g. closed, crowded).
+11. The system must warn the user if they deviate from the optimal route.
+12. The system must have access to the GPS signal of the device for accurate location tracking.
 
 Exhibit Information
-14. The user must be able to view information about the exhibits.
-15. The user must be able to listen to an audio transcript of an exhibit.
-16. The user must be able to view a list of all museum exhibits.
-17. The user must be able to search for exhibits by category or keyword.
-18. The system must generate a visual summary of visited exhibits.
+13. The user must be able to view information about the exhibits.
+14. The user must be able to listen to an audio transcript of an exhibit.
+15. The user must be able to search for exhibits by category or keyword.
 
-Exhibit interaction and Personalization
-19. The user must be able to rate exhibits.
-20. The user must be able to add exhibits to their favorites.
-21. The user must be able to change the application's language.
-22. The system must ask user preferences during register to provide personalized routes.
+Exhibit and Profile Personalization
+16. The user must be able to rate exhibits.
+17. The user must be able to add exhibits to their favorites.
+18. The user must be able to change the application's language.
+19. The system must create a profile for the user based on their preferences.
+20. The user must be able to update their preferences on the profile.
+21. The system must create personalized routes based on the user's provided preferences.
 
-Offline Functionality 
-
-23. The system must provide an offline mode.
-24. The user must be able to download exhibit information and maps.
-25. The user must be able to use basic map and pre-downloaded exhibit information in offline mode.
-26. The system must automatically switch to offline mode when user loses internet connectivity.
-
-Sharing Functionality
-
-27. The user must be able to share their experience on social media platforms.
-28. The user must be able to costumize their post before sharing.
-
+Offline Functionality
+22. The system must provide an offline mode.
+23. The user must be able to download exhibit information and maps.
+24. The user must be able to use basic map and pre-downloaded exhibit information in offline mode.
+25. The system must sychronize the user's data when the user goes online.
 
 Non-functional Requirements
-29. The user interface must be accessible to people with disabilities (e.g., support for voice commands, screen readers).
-30. The system must support at least 10,000 concurrent users without degradation in service.
-31. The system must consume no more than 10% of device battery per hour of active use.
-32. The system must encrypt all user data during transmission and storage.
-33. The system must implement data backup procedures to prevent information loss.
-34. The system must automatically recover from crashes without requiring user intervention.
-35. The system must be compatible with iOS and Android operating systems.
-
-## Compatibility
-
-- The system must be compatible with iOS and Android operating systems.
+26. The system must support at least 10,000 concurrent users without degradation in service.
+27. The system must encrypt all user data during transmission and storage according to the GDPR.
+28. The system must implement data backup procedures to prevent information loss.
+29. The system must automatically recover from crashes without requiring user intervention.
+30. The system must be compatible with iOS and Android operating systems.
+31. The system must not use more than 1GB of RAM of the device.
