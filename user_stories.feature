@@ -1,7 +1,7 @@
 Feature: Route Display
-  The system must calculate and display the suggested route to the selected point.
+  The system calculates and displays the suggested route to the selected destination.
 
-  Scenario: User selects a point on the map
+  Scenario: User selects a destination on the map
     Given the user is on the museum map screen
     When the user selects a point on the map
     Then the system calculates the route to the point
