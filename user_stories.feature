@@ -1,10 +1,10 @@
-Feature: Route Display
+Feature: Display and Calculate Route
   The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
 
-  Scenario: User selects a destination on the map
-    Given the user is on the museum map screen
-    When the user selects a destination
-    Then the system displays information about the destination
+# Scenario: User selects a destination on the map
+#    Given the user is on the museum map screen
+#    When the user selects a destination
+#    Then the system displays information about the destination
 
   Scenario: User selects a destination and the system calculates the route
     Given the user has selected a destination
@@ -17,8 +17,8 @@ Feature: Route Display
   Scenario: User selects multiple stops on the map
     Given the user is on the museum map screen
     When the user adds multiple stops on the map
-    Then the system calculates the fastest route to the destination through all the stops
-    And the system suggests the optimal order to visit the points based on time and distance
+    Then the system suggests the optimal order to visit the points based on time and distance
+    And the system calculates the fastest route to the destination through all the stops
     And the system displays the calculated route on the map
     And the system displays the calculated arrival time to the final destination
 
