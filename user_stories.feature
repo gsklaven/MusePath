@@ -1,45 +1,38 @@
 Feature: Route Display
-  The system calculates and displays the suggested route to the selected destination.
+  The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
 
   Scenario: User selects a destination on the map
     Given the user is on the museum map screen
-    When the user selects a point on the map
-    Then the system calculates the route to the point
-    And the system displays the calculated route on the map
+    When the user selects a destination
+    Then the system displays information about the destination
 
-  Scenario: User selects multiple points on the map
+  Scenario: User selects a destination and the system calculates the route
+    Given the user has selected a destination
+    When the user selects "Navigate"
+    Then the system calculates the route to the destination
+    And the system calculates the arrival time to the destination
+    And the system displays the calculated route on the map
+    And the system displays the estimated arrival time
+
+  Scenario: User selects multiple stops on the map
     Given the user is on the museum map screen
-    When the user selects multiple points on the map
-    Then the system calculates the fastest route to the points
+    When the user adds multiple stops on the map
+    Then the system calculates the fastest route to the destination through all the stops
     And the system suggests the optimal order to visit the points based on time and distance
     And the system displays the calculated route on the map
+    And the system displays the calculated arrival time to the final destination
 
-  Scenario: User selects a point on the map and then changes it
-    Given the user is on the museum map screen
-    When the user selects a point on the map
-    And the user changes the selected point before confirming the route
-    Then the system recalculates the route to the new point
-    And the system displays the updated route on the map
-
-  Scenario: User selects a point on the map and then cancels it
-    Given the user is on the museum map screen
-    When the user selects a point on the map
-    And the user cancels the selection before starting navigation
+  Scenario: User cancels navigation
+    Given the user has selected "Navigate" to a destination
+    When the user cancels the navigation
     Then the system removes the route from the map
+    And the system returns to the museum map screen
 
-  Scenario: User selects a point and then changes it
+  Scenario: User creates a custom route
     Given the user is on the museum map screen
-    When the user selects a point on the map
-    And the user changes the point after the route is calculated
-    Then the system recalculates the route to the new point
-    And the system displays the updated route on the map
-
-  Scenario: User selects a point and then changes the starting point
-    Given the user is on the museum map screen
-    When the user selects a point on the map
-    And the user changes the starting point (e.g., manually selecting a different position or using a different entrance)
-    Then the system recalculates the route from the new starting point
-    And the system displays the updated route on the map
+    When the user selects a destination
+    And the user changes the starting point
+    Then the system calculated the custom route based on the specific starting point and destination
 
   Scenario: No route available to the selected point
     Given the user is on the museum map screen
@@ -49,7 +42,7 @@ Feature: Route Display
 
   Scenario: System fails to calculate a route
     Given the user is on the museum map screen
-    And the user has selected a point on the map
+    And the user has selected a destination
     Then if the system encounters an error while calculating the route
     And the system displays an error message
     And the system allows the user to try again or select a different point
