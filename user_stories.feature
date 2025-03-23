@@ -32,19 +32,21 @@ Feature: Route Display
     Given the user is on the museum map screen
     When the user selects a destination
     And the user changes the starting point
-    Then the system calculated the custom route based on the specific starting point and destination
+    Then the system calculates the custom route based on the specific starting point and destination
 
-  Scenario: No route available to the selected point
+  Scenario: Inaccessible destination
     Given the user is on the museum map screen
-    When the user selects a point that is inaccessible (e.g., an exhibit is closed)
+    When the user selects a destination that is inaccessible (e.g., an exhibit is closed)
     Then the system notifies the user that no route is available
-    And the system suggests the nearest accessible alternative
+    And the system suggests an alternative destination
+    And the system suggests different visiting times
 
   Scenario: System fails to calculate a route
     Given the user is on the museum map screen
-    And the user has selected a destination
-    Then if the system encounters an error while calculating the route
-    And the system displays an error message
+    And the user has selected "Navigate" to a destination
+    When the user requests navigation to that point 
+    But the system fails to calculate a route
+    Then the system displays an error message
     And the system allows the user to try again or select a different point
 
   Scenario: User loses GPS or internet connection during navigation
