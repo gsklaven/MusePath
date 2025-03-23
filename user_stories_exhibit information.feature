@@ -1,9 +1,9 @@
 Feature: Exhibit Information
-The user can serach for exhibits and view information about them.
+The user can search for exhibits and view information about them.
 
   Scenario: User searches for an exhibit in the map
     Given the user is in the museum map screen
-    And the user selects an exhibit from the map
+    When the user selects an exhibit from the map
     Then the system displays information about the exhibit
 
   Scenario: User searches for an exhibit by category
