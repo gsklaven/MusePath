@@ -44,10 +44,11 @@ Feature: Route Display
   Scenario: System fails to calculate a route
     Given the user is on the museum map screen
     And the user has selected "Navigate" to a destination
-    When the user requests navigation to that point 
-    But the system fails to calculate a route
-    Then the system displays an error message
-    And the system allows the user to try again or select a different point
+    When the user requests navigation to that point
+    But the system fails to calculate a route within 5 seconds
+    Then the system displays an error message stating "Unable to calculate route at this time"
+    And the system suggests troubleshooting steps (e.g., "Check your internet connection or try another destination")
+    And the system allows the user to try again or select a different destination
 
   Scenario: User loses GPS or internet connection during navigation
     Given the user is following a route on the map
@@ -83,4 +84,3 @@ The user must be able to see real-time visitor traffic at an exhibit.
     And the system sends a notification informing the user that the exhibit is now less crowded
     And the system suggests an estimated wait time if applicable
     And the system provides a "Navigate Now" option to guide the user there
-
