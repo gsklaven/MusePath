@@ -36,19 +36,19 @@ Scenario: User updates preferences on profile
     When the user selects "Update Preferences"  
     Then the system displays a fixed set of questions about cultural and historical preferences
     And the user answers all the displayed questions  
-    And the system updates the user's profile based on their preferences  
+    And the system updates the user's profile
 
 Scenario: User adds exhibit to favourites 
 
     Given the user is on the information screen of an exhibit  
     When the user selects "Add to Favourites"  
-    Then the system adds the exhibit to the user's favourites list  
+    Then the system updates the user's favourites list  
 
 Scenario: User rates exhibit 
 
     Given the user is on the information screen of an exhibit  
     When the user selects a rating for the exhibit  
-    Then the system saves the user's rating for the exhibit  
+    Then the system updates the user's rating for the exhibit  
     And the system updates the exhibit's average rating accordingly     
 
 
@@ -71,6 +71,6 @@ Scenario: User Has No Saved Preferences
     When the user selects "Personalized Route Generation"  
     And no preferences are saved in the profile  
     Then the system informs the user that no personalized route can be generated  
-    And suggests updating their preferences first  
+    And suggests updating their preferences first /suggests setting up profile
 
 
