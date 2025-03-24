@@ -5,7 +5,7 @@ The user must be able to update their preferences on the profile.
 The user must be able to rate exhibits.
 The user must be able to add exhibits to their favorites.
 
-Scenario: Successful Prrofile Setup
+Scenario: Successful Profile Setup
 
     Given the user is on the museum map screen
     And the user is using the app for the first time after registration
