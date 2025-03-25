@@ -12,7 +12,7 @@ Feature: Display and Calculate Route
   Scenario: User selects multiple stops on the map
     Given the user is on the museum map screen
     When the user adds multiple stops on the map
-    Then the system suggests the optimal order to visit the points based on time, distance and crowdedness
+    Then the system suggests the optimal order to visit the points based on time, distance and traffic
     And the system calculates the fastest route to the destination through all the stops
     And the system displays the calculated route on the map
     And the system displays the calculated arrival time to the final destination
