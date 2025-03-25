@@ -1,11 +1,6 @@
 Feature: Display and Calculate Route
   The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
 
-# Scenario: User selects a destination on the map
-#    Given the user is on the museum map screen
-#    When the user selects a destination
-#    Then the system displays information about the destination
-
   Scenario: User selects a destination and the system calculates the route
     Given the user has selected a destination
     When the user selects "Navigate"
@@ -48,39 +43,10 @@ Feature: Display and Calculate Route
     But the system fails to calculate a route within 5 seconds
     Then the system displays an error message stating "Unable to calculate route at this time"
     And the system suggests troubleshooting steps (e.g., "Check your internet connection or try another destination")
-    And the system allows the user to try again or select a different destination
+    And the system allows the user to try again
 
   Scenario: User loses GPS signal during navigation
     Given the user is following a route on the map
     When the GPS signal is lost
     Then the system notifies the user of the issue
     And the system pauses navigation until the connection is restored
-
-Feature: Exhibit Traffic
-The user must be able to see real-time visitor traffic at an exhibit.
-
-  Scenario: User views real-time traffic at an exhibit
-    Given the user is viewing information about an exhibit
-    When the user checks the real-time traffic status
-    Then the system displays the current visitor traffic level
-    And the system provides additional information (e.g., wait time, crowd density)
-
-  Scenario: User receives a notification about crowded exhibit
-    Given the user is approaching an exhibit
-    Then if the exhibit is crowded
-    And the system notifies the user of the crowd level
-    And the system suggests alternative exhibits or visiting times
-
-  Scenario: User checks traffic at multiple exhibits
-    Given the user has selected multiple exhibits
-    And the user selects a route to visit them
-    When the user checks the traffic status at each exhibit
-    Then the system displays the visitor traffic level at each exhibit
-    And the system suggests the optimal order to visit the exhibits based on traffic
-
-  Scenario: User receives a notification when an exhibit becomes less crowded
-    Given the user has marked an exhibit as "interested" while it was above 80% visitor capacity
-    Then if the real-time visitor density at the exhibit drops below 50% of its maximum capacity
-    And the system sends a notification informing the user that the exhibit is now less crowded
-    And the system suggests an estimated wait time if applicable
-    And the system provides a "Navigate Now" option to guide the user there
