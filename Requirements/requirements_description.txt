@@ -25,7 +25,7 @@ Calculate-and-Display-Route.drawio
 12. The system must have access to the GPS signal of the device for accurate location tracking.  
     Description: The system must utilize the device's GPS to enable accurate real-time location tracking.  
 
-Exhibit Information and Interaction 
+Exhibit Information
 13. The user must be able to view information about the exhibits.  
     Description: Users must be able to access detailed descriptions, history, and context for any exhibit.  
 14. The user must be able to listen to an audio transcript of an exhibit.  
