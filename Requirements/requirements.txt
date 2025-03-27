@@ -1,5 +1,5 @@
 Functional Requirements
-Museum Navigation
+Calculate-and-Display-Route.drawio
 1. The user must be able to open the museum map.
 2. The user must be able to zoom and rotate the map.
 3. The user must be able to see their current location on the map.
@@ -26,7 +26,7 @@ Exhibit and Profile Personalization
 20. The user must be able to update their preferences on the profile.
 21. The system must create personalized routes based on the user's provided preferences.
 
-Offline Functionality
+Offline Mode Functionality
 22. The system must provide an offline mode.
 23. The user must be able to download exhibit information and maps.
 24. The user must be able to use basic map and pre-downloaded exhibit information in offline mode.
