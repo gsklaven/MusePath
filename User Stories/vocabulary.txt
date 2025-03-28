@@ -66,5 +66,3 @@ User Interface Elements
     "More Details" Button: Expands exhibit information and audio options.
 
     "Retry" Option: Prompts reattempt of online actions after connectivity loss.
-
-    Map Overlay: Visual representation of routes, stops, and user position.
