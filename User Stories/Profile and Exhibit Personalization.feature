@@ -34,7 +34,8 @@ Feature: Profile Personalization
 
     Scenario: User adds exhibit to favourites 
         Given the user is on the information screen of an exhibit  
-        When the user selects the dedicated button for adding to favourites  
+        When the user selects "Add to Favourites"  
+        Then the system adds the exhibit to the user's favourites list
         Then the system updates the user's favourites list  
 
     Scenario: User rates exhibit 
