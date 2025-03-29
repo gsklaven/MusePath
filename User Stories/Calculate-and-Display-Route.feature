@@ -49,7 +49,7 @@ The system calculates and displays the suggested route and the estimated arrival
 
     Scenario: User cancels navigation
         Given the user has selected "Navigate" to a destination
-        When the user cancels the navigation by selecting the dedicated button
+        When the user cancels the navigation by selecting the "X" icon
         Then the system stops navigation to the destination
         Then the system removes the route from the map
         And the system returns to the museum map screen
