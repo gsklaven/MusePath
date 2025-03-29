@@ -36,7 +36,7 @@ The system calculates and displays the suggested route and the estimated arrival
         When the user selects to change the starting point
         Then the system displays two options for the user (select on the map or use the search bar)
         And the user selects the starting point
-        Then the system calculates the custom route based on the specific starting point and destination
+        Then the system calculates the custom route based on the new starting point specified by the user and destination
 
     Scenario: System calculates route with custom starting point
         Given the user has selected a starting point
@@ -66,7 +66,7 @@ The system calculates and displays the suggested route and the estimated arrival
         And the user has selected "Navigate" to a destination
         When the user requests navigation to that point
         But the system fails to calculate a route within 5 seconds
-        Then the system displays an error message stating "Unable to calculate route at this time"
+        Then the system displays error "Unable to calculate route at this time"
         And the system suggests troubleshooting steps (e.g., "Check your internet connection or try another destination")
         And the system allows the user to try again
 
