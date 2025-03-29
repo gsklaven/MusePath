@@ -10,38 +10,21 @@ The system calculates and displays the suggested route and the estimated arrival
         And the system displays the directions to the destination
         And the system displays the calculated arrival time to the final destination
 
-    Scenario: User selects the dedicated button for modifying the route
+    Scenario: User selects different starting point
         Given the user has selected a destination
-        When the user selects the dedicated button for modifying the route
-        Then the system displays two options for the user (add stop or change starting point)
-        And the user selects their preferred option
-
-    Scenario: User selects multiple stops on the map
-        Given the user has selected to modify the route
-        When the user selects to add more stops
-        Then the system displays two options for the user (select on the map or use the search bar, these options can happen simultaneously)
-        And the user selects the stops
-
-    Scenario: System calculates the route with multiple stops
-        Given the user has selected multiple stops
-        When the user selects "Navigate"
-        Then the system calculates the route to the destination with all selected stops (with the optimal order to visit the points based on time, distance and crowdedness)
+        When the user selects the new starting point (select on map or use the search bar)
+        And the user selects "Navigate"
+        Then the system calculates the route to the destination 
         And the system calculates the arrival time to the destination
         And the system displays the calculated route on the map
         And the system displays the directions to the destination
         And the system displays the calculated arrival time to the final destination
 
-    Scenario: User changes the starting point
-        Given the user has selected to modify the route
-        When the user selects to change the starting point
-        Then the system displays two options for the user (select on the map or use the search bar)
-        And the user selects the starting point
-        Then the system calculates the custom route based on the new starting point specified by the user and destination
-
-    Scenario: System calculates route with custom starting point
-        Given the user has selected a starting point
-        When the user selects "Navigate"
-        Then the system calculates the route to the destination
+    Scenario: User selects multiple stops
+        Given the user has selected to add stops
+        When the user selects the stops (select on the map or use the search bar, these options can happen simultaneously)
+        And the user selects "Navigate"
+        Then the system calculates the route to the destination with all selected stops (with the optimal order to visit the points based on time, distance and crowdedness)
         And the system calculates the arrival time to the destination
         And the system displays the calculated route on the map
         And the system displays the directions to the destination
