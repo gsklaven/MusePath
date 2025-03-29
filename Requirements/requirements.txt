@@ -1,16 +1,16 @@
 Functional Requirements
-Museum Navigation
+Calculate-and-Display-Route.drawio
 1. The user must be able to open the museum map.
 2. The user must be able to zoom and rotate the map.
 3. The user must be able to see their current location on the map.
 4. The user must be able to select a destination (e.g., exhibit, exit, restroom) on the map.
 5. The system must calculate the suggested route to the selected destination within 5 seconds. 
 6. The system must display the suggested route to the selected destination within 5 seconds.
-7. The system must calculate the user's arrival time to the seleted destination.
+7. The system must estimate the user's arrival time based on their average walking speed of 5 km/h
 8. The user must be able to modify (e.g, add/remove) the stops of the generated route.
-9. The system should update in real time the status of the available destinations.
+9. The system must update in real time the status of the available destinations.
 10. The system must be able to suggest alternative destinations or different visiting times if the destination is inaccesible (e.g. closed, crowded).
-11. The system must warn the user if they deviate from the optimal route.
+11. The system must warn the user if they deviate 50 meters from the optimal route .
 12. The system must have access to the GPS signal of the device for accurate location tracking.
 
 Exhibit Information
@@ -26,7 +26,7 @@ Exhibit and Profile Personalization
 20. The user must be able to update their preferences on the profile.
 21. The system must create personalized routes based on the user's provided preferences.
 
-Offline Functionality
+Offline Mode Functionality
 22. The system must provide an offline mode.
 23. The user must be able to download exhibit information and maps.
 24. The user must be able to use basic map and pre-downloaded exhibit information in offline mode.
