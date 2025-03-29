@@ -1,5 +1,5 @@
 Feature: Display and Calculate Route
-    The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
+The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
 
     Scenario: User selects a destination and the system calculates the route
         Given the user has selected a destination
