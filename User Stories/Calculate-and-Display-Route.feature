@@ -1,5 +1,5 @@
 Feature: Display and Calculate Route
-    The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
+The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
 
     Scenario: User selects a destination and the system calculates the route
         Given the user has selected a destination
@@ -7,27 +7,52 @@ Feature: Display and Calculate Route
         Then the system calculates the route to the destination
         And the system calculates the arrival time to the destination
         And the system displays the calculated route on the map
-        And the system displays the estimated arrival time
+        And the system displays the directions to the destination
+        And the system displays the calculated arrival time to the final destination
+
+    Scenario: User selects the dedicated button for modifying the route
+        Given the user has selected a destination
+        When the user selects the dedicated button for modifying the route
+        Then the system displays two options for the user (add stop or change starting point)
+        And the user selects their preferred option
 
     Scenario: User selects multiple stops on the map
-        Given the user is on the museum map screen
-        When the user adds multiple stops on the map
-        Then the system suggests the optimal order to visit the points based on time, distance and crowdedness
-        And the system calculates the fastest route to the destination through all the stops
+        Given the user has selected to modify the route
+        When the user selects to add more stops
+        Then the system displays two options for the user (select on the map or use the search bar, these options can happen simultaneously)
+        And the user selects the stops
+
+    Scenario: System calculates the route with multiple stops
+        Given the user has selected multiple stops
+        When the user selects "Navigate"
+        Then the system calculates the route to the destination with all selected stops (with the optimal order to visit the points based on time, distance and crowdedness)
+        And the system calculates the arrival time to the destination
         And the system displays the calculated route on the map
+        And the system displays the directions to the destination
+        And the system displays the calculated arrival time to the final destination
+
+    Scenario: User changes the starting point
+        Given the user has selected to modify the route
+        When the user selects to change the starting point
+        Then the system displays two options for the user (select on the map or use the search bar)
+        And the user selects the starting point
+        Then the system calculates the custom route based on the new starting point specified by the user and destination
+
+    Scenario: System calculates route with custom starting point
+        Given the user has selected a starting point
+        When the user selects "Navigate"
+        Then the system calculates the route to the destination
+        And the system calculates the arrival time to the destination
+        And the system displays the calculated route on the map
+        And the system displays the directions to the destination
         And the system displays the calculated arrival time to the final destination
 
     Scenario: User cancels navigation
         Given the user has selected "Navigate" to a destination
-        When the user cancels the navigation
+        When the user cancels the navigation by selecting the "X" icon
+        Then the system stops navigation to the destination
         Then the system removes the route from the map
         And the system returns to the museum map screen
-
-    Scenario: User creates a custom route
-        Given the user is on the museum map screen
-        When the user selects a destination
-        And the user changes the starting point
-        Then the system calculates the custom route based on the specific starting point and destination
 
     Scenario: Inaccessible destination
         Given the user is on the museum map screen
@@ -41,7 +66,7 @@ Feature: Display and Calculate Route
         And the user has selected "Navigate" to a destination
         When the user requests navigation to that point
         But the system fails to calculate a route within 5 seconds
-        Then the system displays an error message stating "Unable to calculate route at this time"
+        Then the system displays error "Unable to calculate route at this time"
         And the system suggests troubleshooting steps (e.g., "Check your internet connection or try another destination")
         And the system allows the user to try again
 
@@ -61,14 +86,13 @@ Feature: Display and Calculate Route
     Scenario: Personalized Route Generation
         Given the user has completed the profile setup
         And the user is on the museum map screen
-        When the user selects "Personalized Route Generation"
+        When the user selects "Generate Personalized Route"
         Then the system generates a route based on the user's saved preferences
         And the system displays the suggested route on the museum map screen
 
     Scenario: User Has No Saved Preferences 
-        Given the user has completed the profile setup  
+        Given the user has not completed the profile setup  
         And the user is on the museum map screen  
-        When the user selects "Personalized Route Generation"  
-        And no preferences are saved in the profile  
+        When the user selects "Generate Personalized Route"  
         Then the system informs the user that no personalized route can be generated  
-        And suggests updating their preferences on the profile
+        And suggests completing their profile setup
