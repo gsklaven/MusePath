@@ -1,50 +1,42 @@
-Vocabulary
-
 Core Components
-      Museum Map: A digital map of the museum, displaying exhibits, routes, and user location.
-      Exhibit: A physical or virtual display in the museum, with associated details (e.g., description, audio transcript).
-      Route: A calculated path between points in the museum, optimized for time, distance, or traffic.
-      Offline Mode: A system state allowing access to pre-downloaded content without internet connectivity.
-      Arrival time: The estimated time of arrival at the destination.
-      Selected destination: The destination selected by the user.
-      GPS signal: The GPS signal provided by the device and used for navigation.
-      Traffic levels: Traffic conditions that affect navigation.
+    Museum Map: A digital map of the museum, displaying exhibits, routes, and user location.
+    Exhibit: A physical or virtual display in the museum, with associated details (e.g., description, audio transcript).
+    Route: A calculated path between points in the museum, optimized for time, distance, or traffic.
+    Offline Mode: A system state allowing access to pre-downloaded content without internet connectivity.
+    GPS Signal: Technology used for real-time location tracking.
+    Point: Exhibits, Toilets, Exits.
 
 User Actions
-      Download for Offline Use: User-initiated action to save exhibit or map data locally.
-      Search by Keyword/Category: User inputs to filter exhibits (e.g., "Art," "History," or free-text terms).
-      Navigate: User request start navigating on the displayed calculated route to a destination.
-      Manage Offline Content: User access to delete or update downloaded content.
-      Cancel Navigation: User action to stop active route guidance.
-      Personalized Route Generation: User-triggered route creation based on saved preferences.
-      Modify route: Modifying the existing route.
-      Multiple stops: Selecting multiple stops along the route.
-      Change starting point: Changing the starting point of the route.
-      Cancel navigation: Cancelling navigation to the destination.
-      No results found: Message displayed when no search results are found.
-      Add to favorites: Adding an exhibit to the user's favorites list.
+    Download for Offline Use: User-initiated action to save exhibit or map data locally.
+    Search by Keyword/Category: User inputs to filter exhibits (e.g., "Art," "History," or free-text terms).
+    Navigate: User requests start navigating on the displayed calculated route to a destination.
+    Manage Offline Content: User access to delete or update downloaded content.
+    Cancel Navigation: User action to stop active route guidance.
+    Personalized Route Generation: User-triggered route creation based on saved preferences.
+    Modify route: Add or remove 
 
 System Actions
-      Display route: Displaying the calculated route on the map.
-      Synchronize Data: Automatic upload of user activity (e.g., favourites, ratings) when connectivity resumes.
-      Display Notification: System alerts (e.g., "Offline mode activated," "No route available") on a screen pop-up.
-      Calculate Route: Algorithmic determination of optimal paths between points.
-      Indicate Limited Functionality: Warn users about unavailable real-time features in offline mode.
-      Inaccessible destination: A destination that is not accessible (e.g., a closed exhibit).
-      Alternative destination: A suggested alternative destination.
-      Profile setup: The process of setting up the user's profile.
-      Profile creation: Creating a user's profile.
-      Profile update: Updating user preferences in their profile.
-      Manage offline content: Managing content downloaded for offline use.
-      Offline map: A map used without an internet connection.
+    Synchronize Data: Automatic upload of user activity (e.g., favourites, ratings) when connectivity resumes.
+    Display Notification: System alerts (e.g., "Offline mode activated," "No route available") on a screen pop-up.
+    Calculate Route: Algorithmic determination of optimal paths between points.
+    Indicate Limited Functionality: Warn users about unavailable real-time features in offline mode.
 
 Technical Terms
-      Pre-Downloaded Content: Exhibits, maps, or audio transcripts saved locally for offline access.
-      Storage Space: Device memory required/used for offline content.
-      Real-Time Features: Functionality requiring internet (e.g., live traffic updates).
-      User Preferences: Saved settings (e.g., exhibit interests, preferred historical era) for personalized routes.
-      Internet connectivity: Connection to the internet.
-      Limited functionality: Reduced functionality due to lack of internet connectivity.
-      Online-only features: Features that require an internet connection.
-      Cultural and historical preferences: User’s cultural and historical preferences given during user profile set-up
-      Audio transcript: Audio transcripts of an exhibit.
+    Pre-Downloaded Content: Exhibits, maps, or audio transcripts saved locally for offline access.
+    Storage Space: Device memory required/used for offline content.
+    Real-Time Features: Functionality requiring internet (e.g., live traffic updates).
+    User Preferences: Saved settings (e.g., exhibit interests, preferred historical era) for personalized routes.
+    Update Outdated Content: Refresh pre-downloaded exhibits/maps when online.
+    Storage Usage: Detailed view of offline content size per category.
+    Limited functionality: No traffic information, and all outputs to the system are synced when internet connectivity is restored.
+
+Navigation & Routing
+    Estimated Arrival Time: Predicted time to reach a destination.
+    Custom Route: User-defined start/end points for navigation.
+    Traffic Levels: Real-time crowd data used for route optimization.
+    Inaccessible Destination: A closed or blocked exhibit with alternative suggestions.
+
+User Interface Elements
+    Search Bar: Input field for exhibit keyword/category searches.
+    "More Details" Button: Expands exhibit information and audio options.
+    "Retry" Option: Prompts reattempt of online actions after connectivity loss.
