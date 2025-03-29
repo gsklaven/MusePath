@@ -32,7 +32,7 @@ Scenario: System synchronizes data when returning online
 Given the user has been using the application in offline mode
 When internet connectivity is restored
 Then the system detects the connection and notifies the user
-And the system synchronizes any user activity data (e.g., bookmarks, ratings) with the server
+And the system synchronizes any user activity data (e.g., favourites, ratings) with the server
 And the system updates any changed museum information
 
 Scenario: User views offline map with limited functionality
