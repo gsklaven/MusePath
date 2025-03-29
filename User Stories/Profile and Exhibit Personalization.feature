@@ -3,16 +3,16 @@ Feature: Profile Personalization
     Scenario: Successful Profile Setup
         Given the user is on the museum map screen
         And the user is using the app for the first time after registration
-        When the system displays a promt suggesting that the user completes their profile setup, by answering a fixed set of questions about cultural and historical preferences
-        Then the user selects "Yes, i would love to!"
+        When the system displays the personalization prompt
+        Then the user selects "Yes, I would love to!"
         And the user answers all the displayed questions
         And the system creates the user's profile
         And the system returns to the museum map screen
 
     Scenario: User Skips Profile Setup Questions
-        Given the user is on the museum map screen  
+        Given the user is on the museum map screen
         And the user is using the app for the first time after registration  
-        When the system displays a prompt suggesting that the user completes their profile setup, by answering a fixed set of questions about cultural and historical preferences
+        When the system displays the personalization prompt 
         Then the user selects "No, thank you"
         And the system returns to the museum map screen
 
@@ -34,7 +34,7 @@ Feature: Profile Personalization
 
     Scenario: User adds exhibit to favourites 
         Given the user is on the information screen of an exhibit  
-        When the user selects "Add to Favourites"  
+        When the user selects "Heart" icon to add the exhibit to their favourites  
         Then the system adds the exhibit to the user's favourites list
         Then the system updates the user's favourites list  
 
