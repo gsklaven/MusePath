@@ -25,7 +25,7 @@ The system must provide an Offline mode allowing users to access basic features 
     Scenario: User attempts to access online-only features while offline
         Given the user is in Offline mode
         When the user attempts to access a feature requiring connectivity (e.g., Exhibit Traffic updates)
-        Then the system displays "Unavailability of the feature"
+        Then the system displays "This feature is unavailable!"
         And the system provides an option to retry when connectivity is restored
 
     Scenario: System synchronizes data when returning online
