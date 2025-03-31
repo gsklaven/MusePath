@@ -19,7 +19,7 @@ The user can search for exhibits and view information about them.
   Scenario: User searches for an exhibit that does not exist
     Given the user is in the museum map screen
     When the user enters a non-existing exhibit name in the search bar
-    Then the system displays a message stating "No results found"
+    Then the system displays "No results found"
     And the system suggests checking the spelling or trying a different search term
 
   Scenario: User searches for exhibit information in offline mode
