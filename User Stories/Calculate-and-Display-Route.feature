@@ -1,18 +1,21 @@
 Feature: Display and Calculate Route
 The system calculates and displays the suggested route and the estimated arrival time to the selected destination.
 
-    Scenario: User selects a destination and the system calculates the route
+    Scenario: User creates route and the system calculates it 
         Given the user has selected a destination
-        When the user selects "Navigate"
+        And the user has selected "Route"
+        When the user creates their route
+        And the user selects "Navigate"
         Then the system calculates the route to the destination
         And the system calculates the arrival time to the destination
         And the system displays the calculated route on the map
         And the system displays the directions to the destination
         And the system displays the calculated arrival time to the final destination
 
-    Scenario: User selects different starting point
+    Scenario: User selects different starting point and the system calculates the route 
         Given the user has selected a destination
-        When the user selects the new starting point (select on map or use the search bar)
+        And the user has selected "Route"
+        When the user selects the new starting point
         And the user selects "Navigate"
         Then the system calculates the route to the destination 
         And the system calculates the arrival time to the destination
@@ -20,9 +23,11 @@ The system calculates and displays the suggested route and the estimated arrival
         And the system displays the directions to the destination
         And the system displays the calculated arrival time to the final destination
 
-    Scenario: User selects multiple stops
-        Given the user has selected to add stops
-        When the user selects the stops (select on the map or use the search bar, these options can happen simultaneously)
+    Scenario: User selects multiple stops and the system calculates the route
+        Given the user has selected a destination
+        And the user has selected "Route"
+        When the user selects "Add Stops"
+        And the user selects the stops 
         And the user selects "Navigate"
         Then the system calculates the route to the destination with all selected stops (with the optimal order to visit the points based on time, distance and crowdedness)
         And the system calculates the arrival time to the destination
