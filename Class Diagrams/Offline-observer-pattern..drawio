@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" version="26.3.0">
   <diagram name="Class Diagram" id="KSTuHrOrOa2EzQPibKH0">
-    <mxGraphModel dx="2809" dy="944" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1998" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -74,7 +74,7 @@
           <mxGeometry y="152" width="250" height="26" as="geometry" />
         </mxCell>
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-24" value="&lt;&lt;Controller&gt;&gt;&#xa;OfflineContentManager" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="320" y="486" width="240" height="210" as="geometry" />
+          <mxGeometry x="320" y="486" width="240" height="188" as="geometry" />
         </mxCell>
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-25" value="- downloadedContent: Map" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="z-32q3GTf2C1MFr4T_wQ-24">
           <mxGeometry y="40" width="240" height="26" as="geometry" />
@@ -91,11 +91,8 @@
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-30" value="+ checkDownloadedContent()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="z-32q3GTf2C1MFr4T_wQ-24">
           <mxGeometry y="126" width="240" height="22" as="geometry" />
         </mxCell>
-        <mxCell id="z-32q3GTf2C1MFr4T_wQ-114" value="+ checkDownloadedContent()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="z-32q3GTf2C1MFr4T_wQ-24">
-          <mxGeometry y="148" width="240" height="22" as="geometry" />
-        </mxCell>
-        <mxCell id="z-32q3GTf2C1MFr4T_wQ-29" value="isExibitDownloaded(id):boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="z-32q3GTf2C1MFr4T_wQ-24">
-          <mxGeometry y="170" width="240" height="40" as="geometry" />
+        <mxCell id="z-32q3GTf2C1MFr4T_wQ-29" value="+ isExibitDownloaded(id):boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="z-32q3GTf2C1MFr4T_wQ-24">
+          <mxGeometry y="148" width="240" height="40" as="geometry" />
         </mxCell>
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-31" value="&lt;&lt;Controller&gt;&gt;&#xa;ContentSynchronizer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
           <mxGeometry x="775" y="490" width="240" height="126" as="geometry" />
@@ -301,9 +298,6 @@
             <mxPoint x="19" y="-29" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="z-32q3GTf2C1MFr4T_wQ-93" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="430" y="660" width="30" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-94" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="440" y="830" width="30" height="30" as="geometry" />
         </mxCell>
@@ -378,7 +372,7 @@
           <mxGeometry x="410" y="446" width="30" height="40" as="geometry" />
         </mxCell>
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-115" value="&lt;div&gt;1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="440" y="694" width="30" height="30" as="geometry" />
+          <mxGeometry x="440" y="680" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
