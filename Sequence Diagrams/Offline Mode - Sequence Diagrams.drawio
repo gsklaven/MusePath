@@ -1,0 +1,381 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:137.0) Gecko/20100101 Firefox/137.0" version="26.2.14">
+  <diagram name="Class Diagram" id="YjQre1amkOkuZqfh-tFu">
+    <mxGraphModel dx="1889" dy="911" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-106" value="Museum App Offline Mode - Sequence Diagrams" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-107" value="&lt;&lt;Boundary&gt;&gt;&#xa;:User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-108" value="&lt;&lt;Controller&gt;&gt;&#xa;:OfflineMode&#xa;Controller" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-109" value="&lt;&lt;Controller&gt;&gt;&#xa;:OfflineContent&#xa;Manager" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-110" value="&lt;&lt;Controller&gt;&gt;&#xa;:Connectivity&#xa;Manager" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-111" value="&lt;&lt;Boundary&gt;&gt;&#xa;:LocalStorage&#xa;Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-112" value="&lt;&lt;Boundary&gt;&gt;&#xa;:Notification&#xa;Service" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="800" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-113" value="&lt;&lt;Boundary&gt;&gt;&#xa;:OfflineMap&#xa;Handler" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="950" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-114" value="&lt;&lt;Controller&gt;&gt;&#xa;:Content&#xa;Synchronizer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="100" width="100" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-115" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=20;" vertex="1" parent="1">
+          <mxGeometry x="20" y="160" width="1200" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-116" value="[Scenario 1: User Downloads Museum Content for Offline Use]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-117" value="1. Select &quot;Download for Offline Use&quot;" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100.00222222222229" y="200" as="sourcePoint" />
+            <mxPoint x="249.2799999999999" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="169.78" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-118" value="2. checkConnectivity()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-110">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="210" as="sourcePoint" />
+            <mxPoint x="180" y="210" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="360" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-119" value="3. return true" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-110" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="230" as="sourcePoint" />
+            <mxPoint x="100" y="230" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="420" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-120" value="4. getAvailableCategories()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-109">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="250" as="sourcePoint" />
+            <mxPoint x="180" y="250" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-121" value="5. return categories" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-109" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="270" as="sourcePoint" />
+            <mxPoint x="100" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-122" value="6. display available categories" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-107">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="290" as="sourcePoint" />
+            <mxPoint x="100" y="290" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-123" value="7. select categories" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-107" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="310" as="sourcePoint" />
+            <mxPoint x="180" y="310" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-124" value="8. getStorageRequirement(categories)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-109">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="330" as="sourcePoint" />
+            <mxPoint x="180" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="330" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-125" value="9. getStorageStats()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-109" target="Wm7s0gMJ7c2GYbMxI62R-111">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="350" as="sourcePoint" />
+            <mxPoint x="180" y="350" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-126" value="10. return stats" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-111" target="Wm7s0gMJ7c2GYbMxI62R-109">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="370" as="sourcePoint" />
+            <mxPoint x="100" y="370" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-127" value="11. return requirements" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-109" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="390" as="sourcePoint" />
+            <mxPoint x="100" y="390" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="330" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-128" value="12. display storage requirements" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-107">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="410" as="sourcePoint" />
+            <mxPoint x="100" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-129" value="13. confirm download" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-107" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="430" as="sourcePoint" />
+            <mxPoint x="180" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-130" value="14. downloadContent(categories)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-109">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="450" as="sourcePoint" />
+            <mxPoint x="180" y="450" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="330" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-131" value="15. saveContent(content, categories)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-109" target="Wm7s0gMJ7c2GYbMxI62R-111">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="470" as="sourcePoint" />
+            <mxPoint x="180" y="470" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-132" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=20;" vertex="1" parent="1">
+          <mxGeometry x="20" y="520" width="1200" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-133" value="[Scenario 2: User Navigates Museum in Offline Mode (Observer Pattern)]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="70" y="520" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-134" value="1. Detects connectivity lost" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry x="1" y="-91" relative="1" as="geometry">
+            <mxPoint x="550" y="550" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="620" y="550" />
+              <mxPoint x="620" y="580" />
+              <mxPoint x="555" y="580" />
+            </Array>
+            <mxPoint x="550" y="580" as="targetPoint" />
+            <mxPoint x="-90" y="81" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-135" value="2. notifyObservers(false) - Observer Pattern" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontStyle=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry x="0.0003" width="80" relative="1" as="geometry">
+            <mxPoint x="550" y="600" as="sourcePoint" />
+            <mxPoint x="250" y="600" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="600" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-136" value="3. update(false) - Observer Pattern" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontStyle=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="250" y="620" as="sourcePoint" />
+            <mxPoint x="250" y="640" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="620" />
+              <mxPoint x="280" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-137" value="4. switchToOfflineMode()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="250" y="660" as="sourcePoint" />
+            <mxPoint x="250" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="660" />
+              <mxPoint x="280" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-138" value="5. showOfflineNotification()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-112">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="700" as="sourcePoint" />
+            <mxPoint x="320" y="700" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-139" value="6. display &quot;Limited functionality available&quot;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-112" target="Wm7s0gMJ7c2GYbMxI62R-107">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="720" as="sourcePoint" />
+            <mxPoint x="240" y="720" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="500" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-140" value="7. checkDownloadedContent()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-109">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="740" as="sourcePoint" />
+            <mxPoint x="320" y="740" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-141" value="8. return content status" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-109" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="760" as="sourcePoint" />
+            <mxPoint x="240" y="760" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-142" value="9. loadOfflineMap()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-113">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="780" as="sourcePoint" />
+            <mxPoint x="320" y="780" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="660" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-143" value="10. return map data" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-113" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="800" as="sourcePoint" />
+            <mxPoint x="240" y="800" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="660" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-144" value="11. display offline map" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-107">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="820" as="sourcePoint" />
+            <mxPoint x="240" y="820" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-145" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;width=50;height=20;" vertex="1" parent="1">
+          <mxGeometry x="20" y="860" width="1200" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-146" value="[Scenario 3: System Synchronizes Data When Returning Online (Observer Pattern)]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="100" y="860" width="440" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-147" value="1. Detects connectivity restored" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry x="-1" y="-91" relative="1" as="geometry">
+            <mxPoint x="550" y="900" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="620" y="900" />
+              <mxPoint x="620" y="930" />
+            </Array>
+            <mxPoint x="550" y="930" as="targetPoint" />
+            <mxPoint x="-90" y="-81" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-148" value="2. notifyObservers(true) - Observer Pattern" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontStyle=1;strokeWidth=2;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-110" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="960" as="sourcePoint" />
+            <mxPoint x="320" y="960" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-149" value="3. update(true) - Observer Pattern" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontStyle=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="250" y="980" as="sourcePoint" />
+            <mxPoint x="250" y="1000" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="980" />
+              <mxPoint x="280" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-150" value="4. notifyUser(&quot;Connection restored&quot;)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-112">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="1030" as="sourcePoint" />
+            <mxPoint x="320" y="1030" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-151" value="5. display &quot;Connection restored&quot;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-112" target="Wm7s0gMJ7c2GYbMxI62R-107">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="1050" as="sourcePoint" />
+            <mxPoint x="240" y="1050" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="1050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-152" value="6. confirm sync" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-107" target="Wm7s0gMJ7c2GYbMxI62R-108">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="1070" as="sourcePoint" />
+            <mxPoint x="320" y="1070" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="1070" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-153" value="7. syncUserData()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-108" target="Wm7s0gMJ7c2GYbMxI62R-114">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="1100" as="sourcePoint" />
+            <mxPoint x="320" y="1100" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-154" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="1145" y="1120" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-155" value="8. collectPendingChanges()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" parent="1" target="Wm7s0gMJ7c2GYbMxI62R-154">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1150" y="1100" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="1180" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Wm7s0gMJ7c2GYbMxI62R-156" value="9. showSyncProgress()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="Wm7s0gMJ7c2GYbMxI62R-114" target="Wm7s0gMJ7c2GYbMxI62R-112">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="240" y="1170" as="sourcePoint" />
+            <mxPoint x="320" y="1170" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1000" y="1170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
