@@ -54,13 +54,13 @@ OfflineModeController
 Content Management Methods
 
 OfflineContentManager
-- downloadContent(categories): Manages the process of downloading and storing selected museum content categories for offline use. This method is essential for preparing the app for potential offline scenarios.
+- downloadContent(id): Manages the process of downloading and storing selected museum content categories for offline use. This method is essential for preparing the app for potential offline scenarios.
 - checkDownloadedContent(): Verifies what content is available locally when the app enters offline mode, determining what functionality can be provided.
 - getStorageRequirement(): Calculates storage space needed for selected content, helping users make informed decisions about what to download.
 
 LocalStorageService
 - saveContent(content, category): Handles the actual storage of downloaded content to the device's local storage.
-- loadContent(category): Retrieves locally stored content when in offline mode, enabling continued access to museum information.
+- loadContent(id): Retrieves locally stored content when in offline mode, enabling continued access to museum information.
 
 Synchronization Methods
 
