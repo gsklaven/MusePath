@@ -1,0 +1,99 @@
+This class diagram models the exhibit display and interaction system within the museum application. It defines the user interface components, controllers, and data entities responsible for presenting exhibit information, handling user interactions, managing searches, and providing accessibility features. The architecture enables users to view exhibits, get detailed information, add ratings, save favorites, and navigate to exhibits of interest.
+
+Main Classes and Explanations:
+
+ExhibitGUI:
+Handles the main exhibit display screen, showing images, basic information, accessibility details, traffic levels, and user interaction buttons.
+Important methods:
+- navigatePress(): Initiates navigation to the selected exhibit.
+- moreDetailsPress(): Shows the detailed information screen for an exhibit.
+
+ExhibitMoreDetailsGUI:
+Presents more comprehensive information about an exhibit, including detailed descriptions and audio playback options.
+Important methods:
+- audioPress(): Plays the audio description for the exhibit.
+
+ExhibitController:
+Manages the business logic for exhibit interactions, including adding ratings, evaluating traffic, playing audio, and managing favorites.
+Important methods:
+- addNewRating(rating, exhibit, user): Records a user's rating for an exhibit.
+- addToFavourites(exhibit, user): Adds an exhibit to a user's favorites list.
+- evaluateTraffic(): Assesses the current traffic level at an exhibit.
+- playAudio(url): Plays the audio description for an exhibit.
+
+Exhibit:
+Represents the core data model for exhibits, storing all relevant information such as identifiers, names, descriptions, coordinates, and accessibility features.
+Important methods:
+- getDescription(): Retrieves the detailed description of the exhibit.
+- getHistoricalInfo(): Gets the historical context information for the exhibit.
+- getCoordinates(): Retrieves the geographical location of the exhibit.
+- getWheelChairAccessible(): Checks if the exhibit is accessible for wheelchair users.
+- getBrailleSupport(): Determines if the exhibit has braille support for visually impaired users.
+
+SearchGUI:
+Provides the interface for searching and filtering exhibits by keywords or categories.
+Important methods:
+- searchKeyword(keyword): Searches for exhibits matching a specific keyword.
+- searchCategory(category): Filters exhibits by category.
+- showExhibitsOnCategory(category): Displays all exhibits in a specific category.
+
+SearchController:
+Handles search logic, validation, filtering, and results display.
+Important methods:
+- isInputValid(input): Validates user input for search functionality.
+
+ExhibitProxy:
+Acts as a proxy for retrieving exhibit data by ID, providing an abstraction layer for data access.
+Important methods:
+- getExhibitById(id): Retrieves a specific exhibit using its unique identifier.
+
+Key Relationships:
+
+- The ExhibitGUI and ExhibitMoreDetailsGUI use the ExhibitController to handle user interactions with exhibits.
+- The Exhibit entity stores data that is displayed by both GUI classes and manipulated by the ExhibitController.
+- The SearchGUI uses the SearchController to perform searches and filter exhibits by keywords or categories.
+- The ExhibitProxy provides a mechanism for retrieving Exhibit entities by their unique identifier.
+- User ratings and favorites create relationships between user accounts and exhibit entities.
+
+How This Design Fulfills Requirements:
+
+This design addresses several key requirements for the museum app's exhibit functionality:
+
+- Exhibit Information: Users can view detailed information about exhibits, including historical context, descriptions, and accessibility features.
+- Accessibility Support: The system tracks and displays information about wheelchair accessibility and braille support for each exhibit.
+- Audio Transcripts: Audio descriptions are available and can be played directly from the exhibit detail screens.
+- Exhibit Search: Users can search for exhibits by keyword or category, facilitating discovery.
+- User Ratings: Users can rate exhibits, and the system displays average ratings to help guide other visitors.
+- Favorites Management: Users can add exhibits to their favorites for quick access later.
+- Traffic Management: The system evaluates and displays current traffic levels at each exhibit to help users plan their visit.
+
+Key Methods in the Exhibit System:
+
+Exhibit Display and Navigation
+- ExhibitGUI.navigatePress(): Initiates navigation to the selected exhibit.
+- ExhibitGUI.moreDetailsPress(): Shows the detailed information screen for an exhibit.
+- ExhibitMoreDetailsGUI.audioPress(): Plays the audio description for the exhibit.
+
+User Interaction
+- ExhibitGUI.addFavouritesPress(): Adds the current exhibit to the user's favorites.
+- ExhibitGUI.ratingPress(): Allows the user to rate the current exhibit.
+- ExhibitController.addNewRating(rating, exhibit, user): Records a user's rating for an exhibit.
+- ExhibitController.addToFavourites(exhibit, user): Adds an exhibit to a user's favorites list.
+
+Exhibit Information Management
+- Exhibit.getDescription(): Retrieves the detailed description of the exhibit.
+- Exhibit.getHistoricalInfo(): Gets the historical context information for the exhibit.
+- Exhibit.getCoordinates(): Retrieves the geographical location of the exhibit.
+- Exhibit.getWheelChairAccessible(): Checks if the exhibit is accessible for wheelchair users.
+- Exhibit.getBrailleSupport(): Determines if the exhibit has braille support for visually impaired users.
+
+Search and Discovery
+- SearchController.searchKeyword(keyword): Searches for exhibits matching a specific keyword.
+- SearchController.searchCategory(category): Filters exhibits by category.
+- SearchController.showExhibitsOnCategory(category): Displays all exhibits in a specific category.
+- ExhibitProxy.getExhibitById(id): Retrieves a specific exhibit using its unique identifier.
+
+System Management
+- ExhibitController.evaluateTraffic(): Assesses the current traffic level at an exhibit.
+- ExhibitController.playAudio(url): Plays the audio description for an exhibit.
+- SearchController.isInputValid(input): Validates user input for search functionality.
