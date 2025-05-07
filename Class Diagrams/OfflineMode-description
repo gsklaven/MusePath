@@ -36,6 +36,48 @@ Scenario 2: User Navigates Museum in Offline Mode
 Scenario 3: System Synchronizes Data When Returning Online
 
 In these scenarios, the Observer pattern plays a crucial role in detecting connectivity changes and triggering appropriate responses from the system.
-Conclusion
 
-This design effectively implements offline functionality for a museum app using the Observer pattern to manage connectivity changes. The architecture supports downloading content for offline use, navigating the museum without an internet connection, and synchronizing data when connectivity is restored.
+
+Key Methods in the Museum App's Observer Pattern Implementation
+
+Observer Pattern Core Methods
+
+ConnectivityManager
+- checkConnectivity(): The cornerstone method that detects network status changes by monitoring the device's connection state. This triggers the entire observer notification chain when connectivity changes.
+- notifyObservers(): Critical method that broadcasts connectivity status to all registered observers, initiating the system's response to connection changes.
+
+OfflineModeController
+- update(isConnected: boolean): Receives connectivity status updates and determines how the app should respond. This method serves as the entry point for the app's reaction to connectivity changes.
+- switchToOfflineMode(): Reconfigures the app to function without internet, enabling cached content and disabling online-only features.
+- switchToOnlineMode(): Restores full functionality when connectivity returns and initiates synchronization processes.
+
+Content Management Methods
+
+OfflineContentManager
+- downloadContent(categories): Manages the process of downloading and storing selected museum content categories for offline use. This method is essential for preparing the app for potential offline scenarios.
+- checkDownloadedContent(): Verifies what content is available locally when the app enters offline mode, determining what functionality can be provided.
+- getStorageRequirement(): Calculates storage space needed for selected content, helping users make informed decisions about what to download.
+
+LocalStorageService
+- saveContent(content, category): Handles the actual storage of downloaded content to the device's local storage.
+- loadContent(category): Retrieves locally stored content when in offline mode, enabling continued access to museum information.
+
+Synchronization Methods
+
+ContentSynchronizer
+- syncUserData(): Manages the critical process of reconciling changes made while offline (like ratings, favorites, or viewing history) with the central system when connectivity is restored.
+- collectPendingChanges(): Gathers all changes made during offline mode that need to be synchronized when connection returns.
+
+Map Functionality
+
+OfflineMapHandler
+- loadOfflineMap(): Loads previously downloaded map data, allowing users to navigate the museum even without an internet connection.
+- planPath(start, destination): Enables offline navigation functionality by calculating routes between exhibits using locally stored map data.
+
+User Communication
+
+NotificationService
+- showOfflineNotification(): Alerts users when the app enters offline mode, setting appropriate expectations for available functionality.
+- showSyncProgress(): Keeps users informed during the synchronization process when connectivity is restored.
+
+
