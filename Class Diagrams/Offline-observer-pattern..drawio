@@ -1,12 +1,9 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" version="26.3.0">
   <diagram name="Class Diagram" id="KSTuHrOrOa2EzQPibKH0">
-    <mxGraphModel dx="1998" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2436" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="z-32q3GTf2C1MFr4T_wQ-1" value="Museum App Offline Mode - Observer Pattern Class Diagram" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="425" y="40" width="600" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-2" value="&lt;&lt;interface&gt;&gt;&#xa;Subject" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
           <mxGeometry x="325" y="80" width="230" height="130" as="geometry" />
         </mxCell>
@@ -373,6 +370,9 @@
         </mxCell>
         <mxCell id="z-32q3GTf2C1MFr4T_wQ-115" value="&lt;div&gt;1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="440" y="680" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="z-32q3GTf2C1MFr4T_wQ-116" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Museum App Offline Mode - Observer Pattern Class Diagram&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=160;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="20" width="1590" height="1020" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
