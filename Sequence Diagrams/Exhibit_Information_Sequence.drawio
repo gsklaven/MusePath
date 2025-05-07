@@ -1093,9 +1093,6 @@
         <mxCell id="tqz0ovIGpH9UwDG_7w5w-1" value="ExhibitMoreDetailsGUI" style="html=1;whiteSpace=wrap;fillColor=#B5739D;" vertex="1" parent="1">
           <mxGeometry x="2170" y="-2160" width="158" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="tqz0ovIGpH9UwDG_7w5w-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="soggcdaaj_bXA0Yey75R-6" target="tqz0ovIGpH9UwDG_7w5w-1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
