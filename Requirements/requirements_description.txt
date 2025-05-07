@@ -1,5 +1,5 @@
 Functional Requirements  
-Calculate-and-Display-Route.drawio
+Calculate-and-Display-Route
 1. The user must be able to open the museum map.  
    Description: The user should be able to access an interactive map to view the layout of the museum.  
 2. The user must be able to zoom and rotate the map.  
@@ -24,49 +24,53 @@ Calculate-and-Display-Route.drawio
     Description: Users must be alerted if they stray more than 50 meters from the calculated route.  
 12. The system must have access to the GPS signal of the device for accurate location tracking.  
     Description: The system must utilize the device's GPS to enable accurate real-time location tracking.  
+13. The museum must provide the map in a format compatible with the system.  
+    Description: The museum must supply the map in a format that the system can process and display.
+14. The museum must provide the exhibit information in a format compatible with the system.  
+    Description: The museum must supply exhibit data in a format that the system can process and display.
 
 Exhibit Information
-13. The user must be able to view information about the exhibits.  
+15. The user must be able to view information about the exhibits.  
     Description: Users must be able to access detailed descriptions, history, and context for any exhibit.  
-14. The user must be able to listen to an audio transcript of an exhibit.  
+16. The user must be able to listen to an audio transcript of an exhibit.  
     Description: The system must allow users to listen to audio guides for the exhibits.  
-15. The user must be able to search for exhibits by category or keyword.  
+17. The user must be able to search for exhibits by category or keyword.  
     Description: Users should be able to find exhibits by category or keyword to match their interests.  
 
 Exhibit and Profile Personalization  
-16. The user must be able to rate exhibits.  
+18. The user must be able to rate exhibits.  
     Description: Users should be able to provide ratings for exhibits they visit to express their preferences.  
-17. The user must be able to add exhibits to their favorites.  
+19. The user must be able to add exhibits to their favorites.  
     Description: Users can save exhibits to a favorites list for quick access later.  
-18. The user must be able to change the application's language.  
+20. The user must be able to change the application's language.  
     Description: The app must allow users to switch between supported languages.  
-19. The system must create a profile for the user based on their preferences.  
+21. The system must create a profile for the user based on their preferences.  
     Description: The system should generate personalized profiles based on user behavior and preferences.  
-20. The user must be able to update their preferences on the profile.  
+22. The user must be able to update their preferences on the profile.  
     Description: Users must be able to modify their preferences to ensure an improved experience.  
-21. The system must create personalized routes based on the user's provided preferences.  
+23. The system must create personalized routes based on the user's provided preferences.  
     Description: The system should create tailored routes for users based on their preferences and interests.  
 
 Offline Mode Functionality  
-22. The system must provide an offline mode.  
+24. The system must provide an offline mode.  
     Description: The system must provide basic functionality even without an internet connection.  
-23. The user must be able to download exhibit information and maps.  
+25. The user must be able to download exhibit information and maps.  
     Description: Users should be able to pre-download maps and exhibit data for offline use.  
-24. The user must be able to use basic map and pre-downloaded exhibit information in offline mode.  
+26. The user must be able to use basic map and pre-downloaded exhibit information in offline mode.  
     Description: The app must allow users to access downloaded maps and exhibit information in offline mode.  
-25. The system must synchronize the user's data when the user goes online.  
+27. The system must synchronize the user's data when the user goes online.  
     Description: User data, such as preferences or saved routes, must synchronize with the cloud when online.  
 
 Non-functional Requirements  
-26. The system must support at least 10,000 concurrent users without degradation in service.  
+28. The system must support at least 10,000 concurrent users without degradation in service.  
     Description: The system must function smoothly with at least 10,000 simultaneous users.  
-27. The system must encrypt all user data during transmission and storage according to the GDPR.  
+29. The system must encrypt all user data during transmission and storage according to the GDPR.  
     Description: All user data must be encrypted during storage and transmission to meet GDPR compliance.  
-28. The system must implement data backup procedures to prevent information loss.  
+30. The system must implement data backup procedures to prevent information loss.  
     Description: Regular backups should ensure no loss of user data, even in unforeseen circumstances.  
-29. The system must automatically recover from crashes without requiring user intervention.  
+31. The system must automatically recover from crashes without requiring user intervention.  
     Description: The system must restart automatically after crashes without manual intervention.  
-30. The system must be compatible with iOS and Android operating systems.  
+32. The system must be compatible with iOS and Android operating systems.  
     Description: The application must run seamlessly on both iOS and Android platforms.  
-31. The system must not use more than 1GB of RAM of the device.  
+33. The system must not use more than 1GB of RAM of the device.  
     Description: The app must not exceed 1GB of RAM usage to ensure smooth performance on mobile devices.  

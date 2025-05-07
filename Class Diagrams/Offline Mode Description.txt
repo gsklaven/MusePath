@@ -1,0 +1,46 @@
+This class diagram models the system for managing offline functionality in the museum application using the Observer pattern. It identifies key entities, boundaries, and controllers involved in managing connectivity changes, offline content, synchronization, and user interaction. The structure emphasizes detecting connectivity changes, managing offline mode, and synchronizing user data.
+
+Main Classes and Explanations:
+
+ConnectivityManager:
+Represents the central controller monitoring network connectivity and notifying observers.
+Important methods:
+- checkConnectivity(): Detects network connectivity status and triggers observer notifications when changes occur.
+- notifyObservers(): Notifies all registered observers about connectivity changes.
+
+OfflineModeController:
+Manages the application's online and offline states by responding to connectivity updates from the ConnectivityManager.
+Important methods:
+- update(isConnected: boolean): Responds to connectivity status updates by switching between modes.
+- switchToOfflineMode(): Enables offline mode features like cached content.
+- switchToOnlineMode(): Restores online functionality and initiates synchronization processes.
+
+OfflineContentManager:
+Handles downloading and managing content for offline use.
+Important methods:
+- downloadContent(id): Downloads selected museum content for offline access.
+- checkDownloadedContent(): Verifies locally available content in offline mode.
+- getStorageRequirement(): Calculates required storage for downloading specific content.
+
+LocalStorageService:
+Manages saving and retrieving content from the device's local storage.
+Important methods:
+- saveContent(content, category): Saves downloaded content locally.
+- loadContent(id): Retrieves stored content for offline access.
+
+ContentSynchronizer:
+Coordinates synchronization of user data and museum content when connectivity is restored.
+Important methods:
+- syncUserData(): Synchronizes changes made during offline mode with the server.
+- collectPendingChanges(): Collects pending updates to be synchronized.
+
+OfflineMapHandler:
+Provides map functionality in offline mode.
+Important methods:
+- loadOfflineMap(): Loads previously downloaded maps for offline navigation.
+- planPath(start, destination): Calculates routes between points using offline map data.
+
+NotificationManager:
+Manages communication with users regarding offline mode and connectivity updates.
+Important methods:
+- sendWarning(message: string): Sends notifications about the app's offline status.
