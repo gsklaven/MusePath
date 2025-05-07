@@ -1,0 +1,60 @@
+This class diagram models the system for calculating and displaying a navigation route within the application. 
+It identifies the key entities, boundaries, and controllers involved in managing routes, user data, device locations, 
+and notifications. The structure emphasizes route calculation, route personalization, location tracking, and user interaction.
+
+Main Classes and Explanations:
+
+User:
+Represents a user of the application with attributes id, name, and averageSpeed.
+Important methods:
+- navigateRoute(start, end, stops): Initiates a route navigation given a starting location, destination, and optional stops.
+- createPersonalisedRoute(): Allows users to create a custom route based on their preferences.
+
+Route:
+Defines a calculated route with path (a list of coordinates) and estimatedTime.
+Important methods:
+- calculateTime(): Calculates the estimated arrival time based on the route's path.
+- personaliseRoute(): Adapts the route to the user's specific preferences.
+
+RoutePlanner:
+Acts as a controller coordinating route creation and updates.
+Important methods:
+- calculateRoute(start, end): Calculates a route between two points.
+- updateRoute(stops): Modifies an existing route by adding stops.
+- suggestAlternatives(destination): Proposes alternative routes when the destination is unavailable.
+
+Destination:
+Represents a possible endpoint for a route, including availability and coordinate information.
+Important methods:
+- checkAvailability(): Checks if the destination is currently reachable.
+- suggestAlternativeTime(): Suggests alternative time slots if the destination is not available.
+
+Coordinates:
+Encapsulates latitude and longitude information.
+Simple utility methods for getting and setting coordinate values.
+
+LocationTracker:
+Retrieves and tracks the device's current location.
+Important methods:
+- getCurrentLocation(): Returns the current coordinates.
+- checkDeviation(path): Monitors whether the user has deviated from the planned route.
+
+MobileDevice:
+Represents the user's mobile device, focusing on location services.
+Important methods:
+- getGPSLocation(): Retrieves GPS coordinates if a signal is available.
+
+NotificationManager:
+Manages system notifications sent to the user regarding route issues or deviations.
+Important methods:
+- sendWarningMessages(destination): Sends notifications when issues occur with a route.
+- updateDeviationWarning(checkDeviation): Sends alerts if a deviation from the route is detected.
+
+Notification:
+Represents individual system messages sent to the user. 
+
+Map:
+Represents the underlying mapping data used to visualize routes.
+Important methods:
+- getPath(): Retrieves path information for route calculation.
+- setData(data): Updates the map’s underlying data source.

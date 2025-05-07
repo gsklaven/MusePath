@@ -1,5 +1,5 @@
 Functional Requirements
-Calculate-and-Display-Route.drawio
+Calculate-and-Display-Route
 1. The user must be able to open the museum map.
 2. The user must be able to zoom and rotate the map.
 3. The user must be able to see their current location on the map.
