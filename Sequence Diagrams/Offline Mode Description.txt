@@ -1,0 +1,69 @@
+# Museum App Offline Mode - Sequence Diagrams Description
+
+## Overview
+
+The sequence diagrams illustrate three key scenarios in the museum app's offline functionality, showing the interactions between components and the flow of information. These diagrams complement the class diagram by demonstrating how the Observer pattern operates in practice when connectivity changes occur.
+
+## Scenario 1: User Downloads Museum Content for Offline Use
+
+This sequence diagram shows the process when a user proactively prepares for offline use by downloading content:
+
+1. The user initiates the process by selecting "Download for Offline Use"
+2. The `OfflineModeController` checks connectivity status through the `ConnectivityManager`
+3. After confirming connectivity, the controller requests available content categories
+4. The system displays categories to the user, who makes selections
+5. The `OfflineContentManager` calculates storage requirements and checks available space
+6. The user confirms the download after reviewing storage requirements
+7. The content is downloaded and saved to local storage
+
+This preparatory scenario is crucial as it enables the subsequent offline functionality.
+
+## Scenario 2: User Navigates Museum in Offline Mode (Observer Pattern)
+
+This diagram demonstrates how the system detects and responds to connectivity loss:
+
+1. The `ConnectivityManager` detects connectivity loss
+2. Using the **Observer Pattern**, it notifies registered observers by calling `notifyObservers(false)`
+3. The `OfflineModeController` receives this notification through its `update(false)` method
+4. The controller switches to offline mode and notifies the user through the `NotificationService`
+5. The system checks for previously downloaded content
+6. The `OfflineMapHandler` loads the offline map
+7. The user can continue using basic functionality with pre-downloaded content
+
+This scenario highlights how the Observer pattern enables automatic adaptation to connectivity changes without user intervention.
+
+## Scenario 3: System Synchronizes Data When Returning Online (Observer Pattern)
+
+The final sequence diagram shows the process when connectivity is restored:
+
+1. The `ConnectivityManager` detects restored connectivity
+2. Using the **Observer Pattern**, it notifies observers by calling `notifyObservers(true)`
+3. The `OfflineModeController` processes this update and notifies the user
+4. After user confirmation, the `ContentSynchronizer` is activated to sync user data
+5. The synchronizer collects pending changes made while offline
+6. The `NotificationService` shows synchronization progress to the user
+
+This scenario completes the offline mode lifecycle by reconciling changes made offline with the central system.
+
+## Observer Pattern Implementation
+
+In both scenarios 2 and 3, the Observer pattern plays a critical role:
+
+- The `ConnectivityManager` (Subject) detects connectivity changes independently
+- It broadcasts these changes to registered observers through `notifyObservers()`
+- The `OfflineModeController` (Observer) receives these notifications via its `update()` method
+- This decoupled communication allows the system to automatically adapt to connectivity changes
+
+The sequence diagrams clearly show how the pattern enables loose coupling between components, with the connectivity status being broadcast rather than components actively polling for status changes.
+
+## Key Interactions
+
+Throughout these scenarios, several important interactions are demonstrated:
+
+1. The communication between the user interface and controllers
+2. The dependency on the `ConnectivityManager` for network status
+3. The coordination between storage services and content managers
+4. The use of notification services to keep users informed
+5. The synchronization process when transitioning between modes
+
+These sequence diagrams provide a dynamic view of the system's behavior that complements the static structure shown in the class diagram.

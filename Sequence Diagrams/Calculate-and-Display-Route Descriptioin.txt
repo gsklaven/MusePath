@@ -1,0 +1,4 @@
+The sequence diagram illustrates the flow of actions and the communication between the user and the key system components (MountmapGUI, RoutePlanner, Destination, Coordinates, LocationTracker, MobileDevice, and Route) for displaying and calculating a route.
+The user inputs or selects a destination, with or without a personalized profile. The system verifies the availability of both the destination and the current location by retrieving latitude and longitude data. If both locations are available, the optimal route is calculated and displayed along with an estimated arrival time.
+If errors occur (e.g., unavailable destination or location), the system either suggests an alternative route or notifies the user of the issue.
+Additionally, the user can cancel the route at any time.
