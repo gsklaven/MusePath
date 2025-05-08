@@ -1,0 +1,3 @@
+The sequence diagram illustrates the flow of actions and interactions between the user and the main system components (HomePageView, HomePageController, RouteGenerator, SearchBar, and Menu) for navigating a museum navigation system.
+The user performs various actions such as generating personalized routes, typing in the search bar, dragging the map, clicking the "Map Button," interacting with the hamburger menu, and selecting an exhibit. Each action triggers communication between components, ensuring the requested functionality is executed. The system responds by displaying maps, updating menus, and showing exhibit information.
+In case of errors (e.g., unavailable data), the system handles these situations by managing the user's interactions without interruptions.
