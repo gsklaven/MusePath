@@ -1,23 +1,37 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "Museum Route Navigation API",
-    "description": "API for route creation, navigation, and personalized experiences within a museum setting.",
+    "title": "Calculate and Display Route",
+    "description": "This API calculates a route between two points and displays it on a map. It supports various scenarios including updating a route, cancelling navigation, handling inaccessible destinations, managing GPS issues, checking traffic levels, and generating personalized routes.",
     "version": "1.0.0"
   },
   "paths": {
     "/routes": {
       "post": {
-        "summary": "Create and calculate a new route",
+        "tags": ["Route"],
+        "summary": "Calculate and display a route",
+        "description": "Calculates a route between two points and displays it on a map. Returns the calculated route, directions, and estimated arrival time.",
+        "operationId": "calculateRoute",
         "requestBody": {
-          "required": true,
+          "description": "Route calculation parameters",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RouteRequest"
+                "$ref": "#/components/schemas/RouteInput"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/RouteInput"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/RouteInput"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -25,37 +39,68 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RouteResponse"
+                  "$ref": "#/components/schemas/Route"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Route"
                 }
               }
             }
           },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Route not found"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
           "500": {
             "description": "Internal server error"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
     },
     "/routes/{id}": {
       "put": {
-        "summary": "Update an existing route",
+        "tags": ["Route"],
+        "summary": "Update a route",
+        "description": "Updates an existing route (e.g., when a different starting point is selected or stops are modified).",
+        "operationId": "updateRoute",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "integer" }
+            "description": "ID of the route to update",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
-          "required": true,
+          "description": "Updated route parameters",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RouteUpdate"
+                "$ref": "#/components/schemas/RouteInput"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -63,43 +108,63 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RouteResponse"
+                  "$ref": "#/components/schemas/Route"
                 }
               }
             }
           },
-          "500": {
-            "description": "Unable to calculate route at this time",
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Route not found"
+          },
+          "default": {
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/routes/{id}/cancel": {
+      "post": {
+        "tags": ["Navigation"],
         "summary": "Cancel navigation",
+        "description": "Cancels an ongoing navigation. Stops navigation and removes the route from the map, returning the user to the museum map screen.",
+        "operationId": "cancelRoute",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "integer" }
+            "description": "ID of the active route to cancel",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Route navigation cancelled successfully.",
+            "description": "Navigation cancelled successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Active route not found"
+          },
+          "default": {
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": { "type": "string" }
-                  }
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -107,64 +172,186 @@
         }
       }
     },
-    "/destinations/{destinationId}/accessibility": {
+    "/destinations/{id}/alternative": {
       "get": {
-        "summary": "Check if a destination is accessible",
+        "tags": ["Destination"],
+        "summary": "Suggest alternatives for inaccessible destination",
+        "description": "When a destination is inaccessible (for example, if an exhibit is closed), this endpoint returns alternative destinations along with suggested visiting times.",
+        "operationId": "suggestAlternativeDestination",
         "parameters": [
           {
-            "name": "destinationId",
+            "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "integer" }
+            "description": "ID of the inaccessible destination",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Accessibility status retrieved",
+            "description": "Alternative destination suggestions returned successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccessibilityResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/routes/personalised": {
-      "post": {
-        "summary": "Generate personalized route",
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userId": { "type": "integer" }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Personalized route generated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PersonalisedRouteResponse"
+                  "$ref": "#/components/schemas/AlternativeDestination"
                 }
               }
             }
           },
           "404": {
-            "description": "User preferences not found",
+            "description": "Destination not found or no alternatives available"
+          },
+          "default": {
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/navigation/pause": {
+      "post": {
+        "tags": ["Navigation"],
+        "summary": "Pause navigation due to lost GPS signal",
+        "description": "When the GPS signal is lost during navigation, this endpoint pauses the active navigation session and notifies the user of the issue until the connection is restored.",
+        "operationId": "pauseNavigation",
+        "requestBody": {
+          "description": "GPS status details",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "routeId": {
+                    "type": "string",
+                    "description": "ID of the active route"
+                  },
+                  "gpsStatus": {
+                    "type": "string",
+                    "enum": ["lost", "restored"],
+                    "description": "Current GPS status"
+                  }
+                },
+                "required": ["routeId", "gpsStatus"]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Navigation paused/resumed successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Active route not found"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/routes/traffic": {
+      "get": {
+        "tags": ["Traffic"],
+        "summary": "Check real-time traffic levels",
+        "description": "Checks the real-time traffic levels for one or more destinations. Returns the current traffic level, suggested optimal order to visit the destinations, and updated estimated arrival times.",
+        "operationId": "checkTraffic",
+        "parameters": [
+          {
+            "name": "destinations",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of destination IDs",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Traffic information retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Traffic"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/routes/personalized": {
+      "post": {
+        "tags": ["Personalized"],
+        "summary": "Generate personalized route",
+        "description": "Generates a route based on the user's saved preferences from their profile. If no preferences are found, the system informs the user accordingly.",
+        "operationId": "generatePersonalizedRoute",
+        "requestBody": {
+          "description": "User profile and preferences data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonalizedRouteInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Personalized route generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalizedRoute"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No saved preferences found; personalized route cannot be generated"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -175,104 +362,206 @@
   },
   "components": {
     "schemas": {
-      "RouteRequest": {
+      "RouteInput": {
         "type": "object",
-        "required": ["userId", "destinationId", "startingPoint"],
         "properties": {
-          "userId": { "type": "integer" },
-          "destinationId": { "type": "integer" },
-          "startingPoint": {
+          "destinationId": {
+            "type": "string",
+            "description": "Unique identifier for the destination"
+          },
+          "start": {
             "type": "object",
             "properties": {
-              "lat": { "type": "number" },
-              "lng": { "type": "number" }
-            }
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              }
+            },
+            "description": "Starting point coordinates"
+          },
+          "end": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              }
+            },
+            "description": "Destination point coordinates"
           },
           "stops": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "lat": { "type": "number" },
-                "lng": { "type": "number" }
+                "latitude": {
+                  "type": "number"
+                },
+                "longitude": {
+                  "type": "number"
+                }
               }
-            }
+            },
+            "description": "Optional stops along the route"
           }
-        }
+        },
+        "required": ["destinationId", "start", "end"]
       },
-      "RouteUpdate": {
-        "type": "object",
-        "properties": {
-          "startingPoint": {
+      "Route": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/RouteInput"
+          },
+          {
             "type": "object",
             "properties": {
-              "lat": { "type": "number" },
-              "lng": { "type": "number" }
-            }
-          },
-          "stops": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "lat": { "type": "number" },
-                "lng": { "type": "number" }
+              "id": {
+                "type": "string",
+                "description": "Unique identifier for the route"
+              },
+              "arrivalTime": {
+                "type": "string",
+                "description": "Estimated arrival time"
+              },
+              "directions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of directions for the route"
+              },
+              "routeMap": {
+                "type": "string",
+                "description": "URL or reference to the displayed map with the route"
               }
             }
           }
-        }
+        ]
       },
-      "RouteResponse": {
+      "AlternativeDestination": {
         "type": "object",
         "properties": {
-          "routeId": { "type": "integer" },
-          "estimatedArrivalTime": { "type": "string" },
-          "directions": {
-            "type": "array",
-            "items": { "type": "string" }
+          "originalDestinationId": {
+            "type": "string",
+            "description": "ID of the originally selected inaccessible destination"
           },
-          "destinationId": { "type": "integer" },
-          "userId": { "type": "integer" }
-        }
-      },
-      "AccessibilityResponse": {
-        "type": "object",
-        "properties": {
-          "destinationId": { "type": "integer" },
-          "accessible": { "type": "boolean" },
-          "message": { "type": "string" },
-          "suggestedAlternatives": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "destinationId": { "type": "integer" },
-                "name": { "type": "string" }
-              }
-            }
-          }
-        }
-      },
-      "PersonalisedRouteResponse": {
-        "type": "object",
-        "properties": {
-          "routeId": { "type": "integer" },
-          "estimatedArrivalTime": { "type": "string" },
-          "directions": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "basedOn": { "type": "string" }
-        }
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "error": { "type": "string" },
-          "message": { "type": "string" },
           "suggestions": {
             "type": "array",
-            "items": { "type": "string" }
+            "items": {
+              "type": "object",
+              "properties": {
+                "destinationId": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "suggestedVisitingTime": {
+                  "type": "string",
+                  "description": "Recommended time for visiting"
+                }
+              }
+            },
+            "description": "List of alternative destinations"
+          }
+        }
+      },
+      "Traffic": {
+        "type": "object",
+        "properties": {
+          "destinations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "destinationId": {
+                  "type": "string"
+                },
+                "trafficLevel": {
+                  "type": "string",
+                  "description": "Current traffic status (e.g., light, moderate, heavy)"
+                },
+                "estimatedWaitTime": {
+                  "type": "string",
+                  "description": "Estimated waiting time due to traffic"
+                }
+              }
+            }
+          },
+          "optimalOrder": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Suggested optimal order to visit the destinations"
+          },
+          "updatedArrivalTimes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Updated estimated arrival times keyed by destination ID"
+          }
+        }
+      },
+      "PersonalizedRouteInput": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier for the user"
+          },
+          "preferences": {
+            "type": "object",
+            "description": "User's saved preferences for route generation",
+            "properties": {
+              "preferredMode": {
+                "type": "string",
+                "description": "E.g., fastest, scenic, least crowded"
+              },
+              "avoidHighTraffic": {
+                "type": "boolean"
+              },
+              "stopsPreference": {
+                "type": "boolean",
+                "description": "Whether the user prefers stops on the route"
+              }
+            }
+          }
+        },
+        "required": ["userId"]
+      },
+      "PersonalizedRoute": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Route"
+          },
+          {
+            "type": "object",
+            "description": "Additional details for personalized route generation",
+            "properties": {
+              "personalizationInfo": {
+                "type": "string",
+                "description": "Information on how the route was personalized based on user preferences"
+              }
+            }
+          }
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message describing the problem"
+          },
+          "code": {
+            "type": "integer",
+            "description": "Error code"
           }
         }
       }
