@@ -1,0 +1,54 @@
+This class diagram models the system for user personalization in the museum application. It defines the user interface components, controllers, and methods for managing user preferences, profiles, and personalized experiences.
+
+Main Classes and Explanations:
+
+PersonalisationOptionGUI:
+This class displays a prompt asking the user if they would like to personalize their experience in the museum.
+Class Attributes:
+- txtPersonalisationPrompt: A TextBox displaying the personalization prompt.
+- btnYes: Button the user presses to proceed with personalization.
+- btnNo: Button the user presses to skip personalization.
+Class Methods:
+- personalisationOptionsGUI(): Constructor method for initializing the GUI.
+- yesPress(): Calls the DisplayQuestionnairePage() function of the DisplayControl() controller.
+- noPress(): Calls the DisplayMainMapPage() function of the DisplayControl() controller.
+
+ProfileGUI:
+This class represents the user’s profile interface where they can manage their preferences, downloaded content, ratings, and more.
+Class Attributes:
+- userImage: Image of the user’s profile picture.
+- username: The username of the current user.
+- arrowIcon: Image used for navigational arrow (e.g., to move to the GUI of the indicated section).
+- favouriteIcon: Image indicating the favourites section.
+- rateIcon: Image representing the ratings section.
+- languageIcon: Image representing the change of the language section.
+- museumIcon: Image representing the change of the preferences section.
+- downloadIcon: Image representing the section for downloading content for offline use.
+- offlineIcon: Image representing the section of the downloaded content.
+Class Methods:
+- favouritesPress(): Opens the user’s list of favourite exhibits.
+- ratingsPress(): Opens the user’s submitted ratings.
+- downloadedPress(): Displays the downloaded exhibits or data.
+- offlinePress(): Activates or opens offline mode settings.
+- languagePress(): Opens the language preference settings.
+- preferencesPress(): Opens general user preferences.
+
+PersonalisationController:
+This controller handles logic related to user personalization including profile setup and personalized route generation.
+Class Methods:
+- createPersonalisedProfile(): Generates a personalized profile based on user input/preferences.
+- deletePersonalisedProfile(): Removes or resets the current personalized profile.
+- createPersonalisedRoute(): Creates a navigation route tailored to the user's personalized preferences.
+
+QuestionnaireGUI:
+This class displays the questionnaire used to gather user preferences for personalization.
+Class Attributes:
+- textQuestion: A TextBox containing the current question.
+- options: A list of strings representing the options for this specific question.
+- selectedOptions: A list of options the user has selected.
+- btnNext: Button to proceed to the next question.
+- btnGetStarted: Button that finalizes the questionnaire and starts the personalized experience.
+Class Methods:
+- handleOptionSelection(): Saves the user’s selection(s) from the available options.
+- nextPress(): Calls the DisplayMainMapPage() function of the DisplayControl() controller.
+- getStartedPress(): Calls the DisplayMainMapPage() function of the DisplayControl() controller.
