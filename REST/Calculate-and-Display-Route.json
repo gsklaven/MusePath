@@ -1,0 +1,195 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Calculate and Display Route",
+    "description": "This API calculates a route between two points and displays it on a map.",
+  "version": "1.0.0"
+  },
+
+   "paths": {
+    "/routes":{
+        "post":{
+            "tags": ["Route"],
+            "summary": "Calculate and display a route",
+            "description": "Calculates a route between two points and displays it on a map.",
+            "operationId": "calculateRoute",
+            "requestBody": {
+                "description": "Route calculation parameters",
+                "content": {
+                    "application/json":{
+                        "schema": {
+                            "$ref": "#/components/schemas/Route"
+                        }
+                    },
+                    "application/xml":{
+                        "schema": {
+                            "$ref": "#/components/schemas/Route"
+                        }
+                    },
+                    "application/x-www-form-urlencoded":{
+                        "schema": {
+                            "$ref": "#/components/schemas/Route"
+                        }
+                    }
+                },
+                "required": true
+            }
+
+        ,
+        "responses": {
+            "200": {
+                "description": "Route calculated succesfully",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Route"
+                        }
+                    },
+                    "application/xml": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Route"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Bad request"
+            },
+            "404": {
+                "description": "Route not found"
+            },
+            "422": {
+                "description": "Unprocessable entity"
+            },
+            "500": {
+                "description": "Internal server error"
+            },
+            "default": {
+                "description": "Unexpected error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+},
+    "/routes/{id}":{
+        "put":{
+            "tags": ["Route"],
+            "summary": "Update a route",
+            "description": "Updates an existing route.",
+            "operationId": "updateRoute",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the route to update",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Route updated successfully",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Route"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Route"
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Bad request"
+                },
+                "404": {
+                    "description": "Route not found"
+                },
+                "422": {
+                    "description": "Unprocessable entity"
+                },
+                "500": {
+                    "description": "Internal server error"
+                },
+                "default": {
+                    "description": "Unexpected error",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Error"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    
+    },
+    "components":{
+        "schemas": {
+            "Route": {
+                "type": "object",
+                "properties": {
+                    "id":{
+                        "type": "string",
+                        "description": "Unique identifier for the route"
+                    },
+                    "destinationId": {
+                        "type": "string",
+                        "description": "Unique identifier for the destination"
+                    },
+                    "start": {
+                        "type": "object",
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "end": {
+                        "type": "object",
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "stops": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
