@@ -37,11 +37,31 @@
         ],
         "responses": {
           "200": {
-            "description": "Map data",
+            "description": "Map data retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Map"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Map not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -64,7 +84,7 @@
         },
         "responses": {
           "200": {
-            "description": "Uploaded map ID",
+            "description": "Map uploaded successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -74,6 +94,26 @@
                       "type": "integer"
                     }
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid map data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -96,11 +136,31 @@
         ],
         "responses": {
           "200": {
-            "description": "Current location",
+            "description": "Current location retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Coordinate"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -131,16 +191,49 @@
         },
         "responses": {
           "200": {
-            "description": "Update status",
+            "description": "Coordinates updated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "gpsUpdated": {
+                    "userId": {
+                      "type": "integer"
+                    },
+                    "updated": {
                       "type": "boolean"
                     }
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid coordinates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -163,7 +256,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of destinations",
+            "description": "List of destinations retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -171,6 +264,16 @@
                   "items": {
                     "$ref": "#/components/schemas/Destination"
                   }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -191,7 +294,7 @@
         },
         "responses": {
           "200": {
-            "description": "Upload response",
+            "description": "Destinations uploaded successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -207,13 +310,33 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid destination data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
     },
     "/destinations/{destinationId}": {
       "get": {
-        "summary": "Get destination info or alternative suggestions",
+        "summary": "Get destination info, status, or alternative suggestions",
         "parameters": [
           {
             "name": "destinationId",
@@ -230,15 +353,51 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "includeStatus",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "includeAlternatives",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Destination data or alternatives",
+            "description": "Destination data retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DestinationResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Destination not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -261,11 +420,41 @@
         },
         "responses": {
           "200": {
-            "description": "Route info",
+            "description": "Route calculated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RouteCalculation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid route parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User or destination not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -296,11 +485,31 @@
         ],
         "responses": {
           "200": {
-            "description": "Route info or ETA",
+            "description": "Route details retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RouteETA"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -331,12 +540,15 @@
         },
         "responses": {
           "200": {
-            "description": "Route update result",
+            "description": "Route updated successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "routeId": {
+                      "type": "integer"
+                    },
                     "stopsUpdated": {
                       "type": "boolean"
                     },
@@ -344,6 +556,36 @@
                       "type": "integer"
                     }
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid stop data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -366,11 +608,41 @@
         },
         "responses": {
           "200": {
-            "description": "Notification sent",
+            "description": "Notification sent successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Notification"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid notification data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -396,7 +668,8 @@
           "rotation": {
             "type": "number"
           }
-        }
+        },
+        "required": ["mapId", "mapData"]
       },
       "MapUpload": {
         "type": "object",
@@ -408,10 +681,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "mapData",
-          "format"
-        ]
+        "required": ["mapData", "format"]
       },
       "Coordinate": {
         "type": "object",
@@ -428,7 +698,8 @@
           "timestamp": {
             "type": "string"
           }
-        }
+        },
+        "required": ["userId", "lat", "lng", "timestamp"]
       },
       "CoordinateUpdate": {
         "type": "object",
@@ -440,10 +711,7 @@
             "type": "number"
           }
         },
-        "required": [
-          "lat",
-          "lng"
-        ]
+        "required": ["lat", "lng"]
       },
       "Destination": {
         "type": "object",
@@ -458,9 +726,19 @@
             "type": "string"
           },
           "coordinates": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number"
+              },
+              "lng": {
+                "type": "number"
+              }
+            },
+            "required": ["lat", "lng"]
           }
-        }
+        },
+        "required": ["destinationId", "name", "type", "coordinates"]
       },
       "DestinationUpload": {
         "type": "object",
@@ -474,13 +752,31 @@
               "$ref": "#/components/schemas/Destination"
             }
           }
-        }
+        },
+        "required": ["mapId", "destinations"]
       },
       "DestinationResponse": {
         "type": "object",
         "properties": {
           "destinationId": {
             "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "coordinates": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number"
+              },
+              "lng": {
+                "type": "number"
+              }
+            }
           },
           "status": {
             "type": "string"
@@ -503,7 +799,8 @@
               "type": "string"
             }
           }
-        }
+        },
+        "required": ["destinationId"]
       },
       "RouteRequest": {
         "type": "object",
@@ -520,7 +817,8 @@
           "startLng": {
             "type": "number"
           }
-        }
+        },
+        "required": ["userId", "destinationId", "startLat", "startLng"]
       },
       "RouteCalculation": {
         "type": "object",
@@ -537,7 +835,8 @@
           "calculationTime": {
             "type": "integer"
           }
-        }
+        },
+        "required": ["routeId", "userId", "destinationId", "calculationTime"]
       },
       "RouteETA": {
         "type": "object",
@@ -566,7 +865,8 @@
               "type": "string"
             }
           }
-        }
+        },
+        "required": ["routeId", "estimatedTime", "distance"]
       },
       "RouteUpdate": {
         "type": "object",
@@ -600,7 +900,8 @@
           "currentLng": {
             "type": "number"
           }
-        }
+        },
+        "required": ["userId", "routeId", "currentLat", "currentLng"]
       },
       "Notification": {
         "type": "object",
@@ -614,7 +915,20 @@
           "message": {
             "type": "string"
           }
-        }
+        },
+        "required": ["notificationId", "type", "message"]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["error", "message"]
       }
     }
   }
