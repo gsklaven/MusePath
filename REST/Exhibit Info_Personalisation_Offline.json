@@ -557,6 +557,86 @@
           }
         }
       }
+    },
+    "/downloads/exhibits/{exhibit_id}": {
+      "get": {
+      "summary": "Download exhibit information for offline use",
+      "description": "FR25. The user must be able to download exhibit information and maps.",
+      "operationId": "downloadExhibitInfo",
+      "parameters": [
+        {
+        "name": "exhibit_id",
+        "in": "path",
+        "description": "ID of the exhibit to download",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64"
+        }
+        }
+      ],
+      "responses": {
+        "200": {
+        "description": "Exhibit data file",
+        "content": {
+          "application/zip": {
+          "schema": {
+            "type": "string",
+            "format": "binary"
+          }
+          }
+        }
+        },
+        "404": {
+        "description": "Exhibit not found",
+        "content": {
+          "application/json": {
+          "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+        }
+      }
+      }
+    },
+    "/downloads/maps/{map_id}": {
+      "get": {
+      "summary": "Download map file for offline use",
+      "description": "FR25. The user must be able to download exhibit information and maps.",
+      "operationId": "downloadMap",
+      "parameters": [
+        {
+        "name": "map_id",
+        "in": "path",
+        "description": "ID of the map to download",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64"
+        }
+        }
+      ],
+      "responses": {
+        "200": {
+        "description": "Map image file",
+        "content": {
+          "image/png": {
+          "schema": {
+            "type": "string",
+            "format": "binary"
+          }
+          }
+        }
+        },
+        "404": {
+        "description": "Map not found",
+        "content": {
+          "application/json": {
+          "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+        }
+      }
+      }
     }
   },
   "components": {
