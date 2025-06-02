@@ -8,7 +8,7 @@ paths:
   /exhibits/{exhibit_id}:
     get:
       summary: View the information page of an exhibit
-      description: FR15. The user must be able to view information about the exhibits.
+      description: "FR15. The user must be able to view information about the exhibits.\n\nFR25. The user must be able to use basic map and pre-downloaded exhibit information in offline mode."
       operationId: viewInfo
       parameters:
         - name: exhibit_id
@@ -448,7 +448,7 @@ paths:
   /downloads/exhibits/{exhibit_id}:
     get:
       summary: Download exhibit information for offline use
-      description: FR25. The user must be able to download exhibit information and maps.
+      description: FR24. The user must be able to download exhibit information and maps.
       operationId: downloadExhibitInfo
       parameters:
         - name: exhibit_id
@@ -475,7 +475,7 @@ paths:
   /downloads/maps/{map_id}:
     get:
       summary: Download map file for offline use
-      description: FR25. The user must be able to download exhibit information and maps.
+      description: FR24. The user must be able to download exhibit information and maps.
       operationId: downloadMap
       parameters:
         - name: map_id
@@ -499,6 +499,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /sync:
+    post:
+      summary: Synchronize offline changes
+      description: FR26. Synchronize user data when going online
+      operationId: syncOfflineData
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/OfflineRating'
+                  - $ref: '#/components/schemas/OfflineFavorite'
+                discriminator:
+                  propertyName: operation_type
+      responses:
+        '200':
+          description: Synchronization successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conflicts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SyncConflict'
+        '400':
+          description: Invalid operations in payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        
 components:
   schemas:
     MapWithOfflineStatus:
@@ -538,3 +574,56 @@ components:
             - ancient greece
       required:
         - language
+    OfflineRating:
+      type: object
+      properties:
+        operation_type:
+          type: string
+          enum: [rating]
+          example: rating
+        exhibit_id:
+          type: integer
+          format: int64
+          example: 456
+        rating:
+          type: number
+          format: float
+          example: 4.5
+        local_timestamp:
+          type: string
+          format: date-time
+      required:
+        - operation_type
+        - exhibit_id
+        - rating
+        - local_timestamp
+
+    OfflineFavorite:
+      type: object
+      properties:
+        operation_type:
+          type: string
+          enum: [add_favorite, remove_favorite]
+          example: add_favorite
+        exhibit_id:
+          type: integer
+          format: int64
+          example: 789
+        local_timestamp:
+          type: string
+          format: date-time
+      required:
+        - operation_type
+        - exhibit_id
+        - local_timestamp
+
+    SyncConflict:
+      type: object
+      properties:
+        operation:
+          type: object
+        server_version:
+          type: object
+        resolution:
+          type: string
+          enum: [client_wins, server_wins]
