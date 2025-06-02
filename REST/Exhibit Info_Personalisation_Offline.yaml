@@ -215,53 +215,53 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    get:
-      summary: Get ratings for an exhibit
-      description: Retrieve rating information for a specific exhibit
-      operationId: getExhibitRatings
-      parameters:
-        - name: exhibit_id
-          in: path
-          description: ID of the specific exhibit
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: Successfully retrieved exhibit ratings
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  average_rating:
-                    type: number
-                    format: float
-                    example: 4.2
-                    description: The average rating of the exhibit
-                  total_ratings:
-                    type: integer
-                    example: 15
-                    description: Total number of ratings received
-                  ratings_distribution:
-                    type: object
-                    description: Distribution of ratings (1-5)
-                    example: {"1": 2, "2": 1, "3": 3, "4": 5, "5": 4}
-        '404':
-          description: Exhibit not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+    # get:
+    #   summary: Get ratings for an exhibit
+    #   description: Retrieve rating information for a specific exhibit
+    #   operationId: getExhibitRatings
+    #   parameters:
+    #     - name: exhibit_id
+    #       in: path
+    #       description: ID of the specific exhibit
+    #       required: true
+    #       style: simple
+    #       explode: false
+    #       schema:
+    #         type: integer
+    #         format: int64
+    #   responses:
+    #     '200':
+    #       description: Successfully retrieved exhibit ratings
+    #       content:
+    #         application/json:
+    #           schema:
+    #             type: object
+    #             properties:
+    #               average_rating:
+    #                 type: number
+    #                 format: float
+    #                 example: 4.2
+    #                 description: The average rating of the exhibit
+    #               total_ratings:
+    #                 type: integer
+    #                 example: 15
+    #                 description: Total number of ratings received
+    #               ratings_distribution:
+    #                 type: object
+    #                 description: Distribution of ratings (1-5)
+    #                 example: {"1": 2, "2": 1, "3": 3, "4": 5, "5": 4}
+    #     '404':
+    #       description: Exhibit not found
+    #       content:
+    #         application/json:
+    #           schema:
+    #             $ref: '#/components/schemas/Error'
+    #     '500':
+    #       description: Internal server error
+    #       content:
+    #         application/json:
+    #           schema:
+    #             $ref: '#/components/schemas/Error'
   /users/{user_id}/favourites:
     post:
       summary: Add an exhibit to favourites
