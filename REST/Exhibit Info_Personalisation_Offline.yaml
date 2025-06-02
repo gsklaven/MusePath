@@ -1,0 +1,540 @@
+openapi: 3.0.3
+info:
+  title: MusePath
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /exhibits/{exhibit_id}:
+    get:
+      summary: View the information page of an exhibit
+      description: FR15. The user must be able to view information about the exhibits.
+      operationId: viewInfo
+      parameters:
+        - name: exhibit_id
+          in: path
+          description: Id of the specific exhibit
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: mode
+          in: query
+          required: false
+          description: Mode of access - online or offline
+          schema:
+            type: string
+            enum:
+              - online
+              - offline
+            example: online
+      responses:
+        '200':
+          description: Exhibit information retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exhibit_id:
+                    type: number
+                    format: int64
+                    example: 0
+                    description: ID of the exhibit
+                  title:
+                    type: string
+                    example: string
+                  rating:
+                    type: number
+                    format: float
+                    example: 0
+                    description: Average user rating out of 5
+                  location:
+                    type: string
+                    example: string
+                    description: Physical location of the exhibit
+                  features:
+                    type: array
+                    description: Accessibility and visitor options
+                    items:
+                      type: string
+                      example: Wheelchair Accessible
+                  status:
+                    type: string
+                    enum:
+                      - open
+                      - closed
+                      - under_maintenance
+                    example: open
+                    description: Availability status of the exhibit
+  /exhibits/{exhibit_id}/audio:
+    get:
+      summary: Get audio guide for an exhibit
+      description: FR16. The user must be able to listen to an audio transcript of an exhibit.
+      operationId: getAudioGuide
+      parameters:
+        - name: exhibit_id
+          in: path
+          description: Id of the specific exhibit
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: mode
+          in: query
+          required: false
+          description: Mode of access - online or offline
+          schema:
+            type: string
+            enum:
+              - online
+              - offline
+            example: online
+      responses:
+        '200':
+          description: Audio guide retrieved successfully
+          content:
+            audio/mpeg:
+              schema:
+                type: string
+                format: binary
+        '402':
+          description: Audio guide not available offline
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Exhibit not found or no audio guide available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /exhibits/search:
+    get:
+      summary: Search for exhibits
+      description: FR17.  The user must be able to search for exhibits by category or keyword.
+      operationId: searchExhibits
+      parameters:
+        - name: exhibit_term
+          in: query
+          description: Keyword to search by exhibit title, artist, or description
+          required: true
+          schema:
+            type: string
+        - name: category
+          in: query
+          description: Filter exhibits by category
+          required: false
+          schema:
+            type: string
+            example: Modern art
+        - name: mode
+          in: query
+          required: false
+          description: Mode of access - online or offline
+          schema:
+            type: string
+            enum:
+              - online
+              - offline
+            example: online
+      responses:
+        '200':
+          description: Exhibits matching the search criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    exhibit_id:
+                      type: number
+                      format: int64
+                      example: 0
+                    title:
+                      type: string
+                      example: string
+        '404':
+          description: No exhibits found matching the search criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /exhibits/{exhibit_id}/ratings:
+    post:
+      summary: Rate an exhibit
+      description: FR18. The user must be able to rate exhibits.
+      operationId: rateExhibit
+      parameters:
+        - name: exhibit_id
+          in: path
+          description: Id of the specific exhibit
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: number
+                  format: float
+                  example: 4
+              required:
+                - rating
+      responses:
+        '204':
+          description: Exhibit rated successfully
+        '400':
+          description: Invalid rating value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Exhibit not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      summary: Get ratings for an exhibit
+      description: Retrieve rating information for a specific exhibit
+      operationId: getExhibitRatings
+      parameters:
+        - name: exhibit_id
+          in: path
+          description: ID of the specific exhibit
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully retrieved exhibit ratings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  average_rating:
+                    type: number
+                    format: float
+                    example: 4.2
+                    description: The average rating of the exhibit
+                  total_ratings:
+                    type: integer
+                    example: 15
+                    description: Total number of ratings received
+                  ratings_distribution:
+                    type: object
+                    description: Distribution of ratings (1-5)
+                    example: {"1": 2, "2": 1, "3": 3, "4": 5, "5": 4}
+        '404':
+          description: Exhibit not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/{user_id}/favourites:
+    post:
+      summary: Add an exhibit to favourites
+      description: FR19. The user must be able to add exhibits to their favourites.
+      operationId: addExhibitToFavourites
+      parameters:
+        - name: user_id
+          in: path
+          description: Id of the user
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                exhibit_id:
+                  type: integer
+                  format: int64
+                  example: 1
+              required:
+                - exhibit_id
+      responses:
+        '204':
+          description: Exhibit added to favourites successfully
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User or exhibit not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/{user_id}/preferences:
+    put:
+      summary: Set or update user preferences
+      description: FR22. The user must be able to update their preferences on the profile.
+      operationId: updateUserPreferences
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user whose preferences are being set or updated
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPreferences'
+      responses:
+        '204':
+          description: Personalised profile was successfully
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/{user_id}/routes:
+    get:
+      summary: Get personalized route for a user
+      description: FR23. The system must create personalized routes based on the user's provided preferences.
+      operationId: getPersonalizedRoute
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Personalized route generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  route_id:
+                    type: integer
+                    format: int64
+                    example: '123'
+                  exhibits:
+                    type: array
+                    items:
+                      type: integer
+                      format: int64
+                  estimated_duration:
+                    type: string
+                    example: 45 minutes
+                  map_url:
+                    type: string
+                    format: uri
+                    example: /maps/123/downloaded_map.png
+                  starting_point:
+                    type: number
+                    format: float
+                    example: 40.712776, -74.005974
+                  ending_point:
+                    type: number
+                    format: float
+                    example: 40.712776, -74.005974
+        '400':
+          description: Cannot generate route — missing user preferences
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /maps/{map_id}:
+    get:
+      summary: Use map with offline-aware functionality
+      description: FR26.The user must be able to use basic map and pre-downloaded exhibit information in offline mode.
+      operationId: getMapById
+      parameters:
+        - name: map_id
+          in: path
+          description: ID of map
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: mode
+          in: query
+          required: false
+          description: Mode of access - online or offline
+          schema:
+            type: string
+            enum:
+              - online
+              - offline
+            example: offline
+      responses:
+        '200':
+          description: Map details with offline-aware URLs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MapWithOfflineStatus'
+        '503':
+          description: Service unavailable (offline mode, no cached data)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /downloads/exhibits/{exhibit_id}:
+    get:
+      summary: Download exhibit information for offline use
+      description: FR25. The user must be able to download exhibit information and maps.
+      operationId: downloadExhibitInfo
+      parameters:
+        - name: exhibit_id
+          in: path
+          description: ID of the exhibit to download
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Exhibit data file
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Exhibit not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /downloads/maps/{map_id}:
+    get:
+      summary: Download map file for offline use
+      description: FR25. The user must be able to download exhibit information and maps.
+      operationId: downloadMap
+      parameters:
+        - name: map_id
+          in: path
+          description: ID of the map to download
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Map image file
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Map not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    MapWithOfflineStatus:
+      type: object
+      properties:
+        map_id:
+          type: integer
+          format: int64
+          example: 1
+        title:
+          type: string
+          example: Museum Map
+        map_url:
+          type: string
+          format: uri
+          example: /maps/1/downloaded_map.png
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+        - code
+        - message
+    UserPreferences:
+      type: object
+      properties:
+        interests:
+          type: array
+          items:
+            type: string
+          example:
+            - modern art
+            - ancient greece
+      required:
+        - language
