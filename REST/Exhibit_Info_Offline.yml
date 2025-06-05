@@ -22,7 +22,7 @@ paths:
             format: int64
         - name: mode
           in: query
-          required: false
+          required: true
           description: Mode of access - online or offline
           schema:
             type: string
@@ -86,7 +86,7 @@ paths:
             format: int64
         - name: mode
           in: query
-          required: false
+          required: true
           description: Mode of access - online or offline
           schema:
             type: string
@@ -135,7 +135,7 @@ paths:
             example: category
         - name: mode
           in: query
-          required: false
+          required: true
           description: Mode of access - online or offline
           schema:
             type: string
@@ -572,8 +572,6 @@ components:
           example:
             - modern art
             - ancient greece
-      required:
-        - language
     OfflineRating:
       type: object
       properties:
@@ -628,3 +626,64 @@ components:
           type: string
           enum: [client_wins, server_wins]
           
+    Exhibit:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        category:
+          type: array
+          items:
+            type: string
+        historicalInfo:
+          type: string
+          description: "Long text about historical background"
+        visitingAvailability:
+          type: boolean
+        #coordinates:
+          #$ref: '#/components/schemas/Routes'
+        description:
+          type: string
+          description: "Long descriptive text"
+        ratings:
+          type: object
+          additionalProperties:
+            type: integer
+          description: "Map of User ID to rating (1-5)"
+        favouredBy:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        wheelchairAccessible:
+          type: boolean
+        brailleSupport:
+          type: boolean
+        keywords:
+          type: array
+          items:
+            type: string
+  
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        ratings:
+          type: object
+          additionalProperties:
+            type: integer
+          description: "Map of Exhibit ID to rating (1-5)"
+        favourites:
+          type: array
+          items:
+            $ref: '#/components/schemas/Exhibit'
+        personalizationAvailable:
+          type: boolean
+        preferences:
+          type: array
+          items:
+            type: string
