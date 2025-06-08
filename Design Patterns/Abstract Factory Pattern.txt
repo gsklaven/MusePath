@@ -1,0 +1,5 @@
+The diagram represents an Abstract Factory system that dynamically supports multiple platforms —Android, iOS— using an EnvironmentalManager 
+to select the appropriate factory at runtime. Each factory creates a proxy (DeviceCapabilitiesProxy) that provides platform-specific 
+functionalities, such as retrieving GPS locations, determining device orientation, and managing notifications. 
+This design complies with Non-Functional Requirement 32, ensuring compatibility with both iOS and Android operating systems. 
+It is also extensible, allowing new devices to be integrated easily by adding new factories and proxies without altering existing components.
